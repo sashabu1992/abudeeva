@@ -1,0 +1,202 @@
+<!-- Подключение стилей Swiper -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Подключение скриптов Swiper -->
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+   <style>
+    .slider {
+        color: #fff;
+        height: 700px;
+        overflow: hidden;
+    }
+    .slider .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .slider__flex {
+        display: flex;
+        align-items: flex-start;
+    }
+    .slider__col {
+        display: flex;
+        flex-direction: column;
+        width: 140px;
+        margin-right: 20px;
+    }
+    .slider__prev,
+    .slider__next {
+        cursor: pointer;
+        text-align: center;
+        font-size: 14px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        display:none;
+    }
+    .slider__prev:focus,
+    .slider__next:focus {
+        outline: none;
+    }
+    .slider__thumbs {
+        height: calc(800px - 96px);
+        width:98px
+    }
+
+
+    .slider__thumbs .slider__image {
+        transition: 0.25s;
+    }
+    .slider__thumbs .slider__image:hover {
+        opacity: 1;
+    }
+    .slider__thumbs .swiper-slide-thumb-active .slider__image {
+        opacity: 1;
+    }
+    .slider__images {
+        height: 800px;
+        width: 100%;
+    }
+    .slider__images .slider__image img {
+        transition: 3s;
+    }
+    .slider__images .slider__image:hover img {
+        transform: scale(1.1);
+    }
+    .slider__image {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .slider__image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+    @media (max-width: 767.98px) {
+        .slider__flex {
+            flex-direction: column-reverse;
+        }
+        .slider__col {
+            flex-direction: row;
+            align-items: center;
+            margin-right: 0;
+            margin-top: 24px;
+            width: 100%;
+        }
+        .slider__images {
+            width: 100%;
+        }
+        .slider__thumbs {
+            height: 100px;
+            width: calc(100% - 96px);
+            margin: 0 16px;
+        }
+        .slider__prev,
+        .slider__next {
+            height: auto;
+            width: 32px;
+        }
+    }
+</style>
+    <!-- Галерея фотографий -->
+    {% if photos %}
+    <section class="slider">
+        <div class="slider__flex">
+            <div class="slider__col">
+
+                <!-- Слайдер с превью -->
+                <div class="slider__thumbs">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {% for photo in photos %}
+                            <div class="swiper-slide">
+                                <div class="slider__image">
+                                    <img src="{{ photo.image.url }}" alt="{{ photo.alt }}" />
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Слайдер с основными изображениями -->
+            <div class="slider__images">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for photo in photos %}
+                        <div class="swiper-slide">
+                            <div class="slider__image">
+                                <img src="{{ photo.image.url }}" alt="{{ photo.alt }}" />
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% else %}
+    <p>Фотографии отсутствуют.</p>
+    {% endif %}
+
+
+
+<!-- Инициализация Swiper -->
+<script>
+    // Инициализация превью слайдера
+    const sliderThumbs = new Swiper(".slider__thumbs .swiper-container", {
+        direction: "vertical", // вертикальная прокрутка
+        slidesPerView: 6, // показывать по 3 превью
+        spaceBetween: 24, // расстояние между слайдами
+        navigation: {
+            nextEl: ".slider__next", // кнопка Next
+            prevEl: ".slider__prev", // кнопка Prev
+        },
+        freeMode: true, // при перетаскивании превью ведет себя как при скролле
+        breakpoints: {
+            0: {
+                direction: "horizontal", // горизонтальная прокрутка
+            },
+            768: {
+                direction: "vertical", // вертикальная прокрутка
+            },
+        },
+    });
+
+    // Инициализация слайдера изображений
+    const sliderImages = new Swiper(".slider__images .swiper-container", {
+        direction: "vertical", // вертикальная прокрутка
+        slidesPerView: 1, // показывать по 1 изображению
+        spaceBetween: 32, // расстояние между слайдами
+        mousewheel: true, // можно прокручивать изображения колёсиком мыши
+        navigation: {
+            nextEl: ".slider__next", // кнопка Next
+            prevEl: ".slider__prev", // кнопка Prev
+        },
+        grabCursor: true, // менять иконку курсора
+        thumbs: {
+            swiper: sliderThumbs, // указываем на превью слайдер
+        },
+        breakpoints: {
+            0: {
+                direction: "horizontal", // горизонтальная прокрутка
+            },
+            768: {
+                direction: "vertical", // вертикальная прокрутка
+            },
+        },
+    });
+</script>

@@ -1,0 +1,17 @@
+ {% load thumbnail %}
+{% load custom_filters %}
+
+                        <div class="item itemstovar">
+                            <a href="{{ tovar.get_absolute_url }}"> <img src="{{ tovar.zast|thumbnail_url:'tovar_zast' }}" alt=""></a>
+                           <a class="nametov" href="{{ tovar.get_absolute_url }}">{{ tovar.h1 }}</a>
+                        <div class="flex prop">
+{% load humanize %}
+<span class="price">{{ tovar.price|floatformat:"-2"|intcomma }} ₽</span>
+{% if tovar.old_price %}
+    <span class="old_price">{{ tovar.old_price|floatformat:"-2"|intcomma }} ₽</span>
+{% endif %}
+
+
+                        </div>
+                            <!-- Дополнительные поля товара -->
+                        </div>

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% load custom_filters %}
+ {% load thumbnail %}
+ {% load static %}
+
+{% block content %}
+
+    <section id="order-detail">
+<div class="container">
+
+
+    <div class="breadcrumbs">
+        <a href="{% url 'index' %}">Главная</a> |
+       <a href="{% url 'lk' %}">Личный кабинет</a> /
+        <a href="">Мои заказы</a> /
+        <span>Заказ №{{ order.id }}</span>
+    </div>
+
+    <div class="nazad">
+        <a href="javascript:history.back()">
+            <svg width="20.501953" height="6.660950" viewBox="0 0 20.502 6.66095" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs/>
+                <path id="Vector 2" d="M1.7 2.83L3.68 0.85C3.88 0.65 3.88 0.34 3.68 0.14C3.48 -0.05 3.17 -0.05 2.97 0.14L0.14 2.97C-0.05 3.17 -0.05 3.48 0.14 3.68L2.97 6.51C3.17 6.71 3.48 6.71 3.68 6.51C3.88 6.31 3.88 6 3.68 5.8L1.7 3.83L20.5 3.83L20.5 2.83L1.7 2.83Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
+            </svg>
+            назад
+        </a>
+    </div>
+
+
+    <div class="rows-order">
+            {% include 'account/chunk/sidebar.html' %}
+
+        <div class="order-info">
+
+    <div class="order-details">
+        <h2>Заказ №{{ order.id }}</h2>
+
+        <div class="punkt-order">
+            <span class="zag">Получатель:</span>
+            <p>{{ order.user.last_name }} {{ order.user.first_name }}</p>
+            <p>{{ order.user.email }} </p>
+             <p>{{ order.user.profile.phone }} </p>
+        </div>
+
+            <div class="punkt-order">
+            <span class="zag">Итого:</span>
+            <p>{{ order.get_total_cost }}</p>
+        </div>
+
+       <div class="punkt-order">
+            <span class="zag">Оплата:</span>
+            <p>{{ order.get_payment_method_display }}</p>
+        </div>
+
+        <h3>СОСТАВ ЗАКАЗА: <span class="">{{ order.get_total_quantity|pluralize_products }} </span></h3>
+            <div class="cart-items">
+
+{% for item in order.items.all %}
+    <div class="cart-item" >
+        <div class="imgmini">
+            <img src="{{ item.tovar.zast|thumbnail_url:'cart_img' }}" alt="">
+        </div>
+        <div class="namehar">
+            <div>
+                <h3>{{ item.tovar.h1 }}</h3>
+                <div class="property">
+                    Арт: {{ item.tovar.article }}<br>
+                    {% for key, value in item.properties.items %}
+                        <span>{{ key }}: {{ value }}</span>,
+                    {% endfor %}
+                    кол-во: <span class="item-quantity">{{ item.quantity }}</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="cartfunc">
+
+            <span></span>
+            <span class="priceitem">{{ item.price }} ₽</span>
+        </div>
+    </div>
+
+{% endfor %}
+            </div>
+
+
+    <div class="itog">
+          <div class="rowsc">
+            <div class="item1">Товары (<span class="cart-count-number">{{ order.get_total_quantity }}</span>):</div>
+            <div class="iten2"><span id="total-price" class="total-price">{{ order.get_total_cost|format_price }}</span> ₽</div>
+        </div>
+
+        <div class="rowsc">
+            <div class="item1">Скидка: </div>
+            <div class="iten2"><span id="total-price-delivery" class="total-delivery">0</span> ₽</div>
+        </div>
+
+          <div class="rowsc">
+            <div class="item1">Доставка: </div>
+            <div class="iten2"><span id="total-price-delivery" class="total-delivery">0</span> ₽</div>
+        </div>
+
+         <div class="rowsc3">
+            <div class="item1">Баллы к начислению: </div>
+            <div class="iten2"><span >+99</span> AB</div>
+        </div>
+
+         <div class="rowsc2">
+            <div class="item1">ИТОГО </div>
+            <div class="iten2"><span id="total-price2" class="total-price">{{ order.get_total_cost|format_price }}</span> ₽</div>
+        </div>
+
+    </div>
+
+    </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+    </section>
+{% endblock %}

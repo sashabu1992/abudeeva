@@ -1,0 +1,192 @@
+
+.content_product{
+    gap:30px;
+    justify-content: space-between;
+    margin:30px auto;
+}
+.content_product .left{
+    width:calc(50% - 30px)
+}
+.content_product .right{
+    width:calc(50% - 30px)
+}
+.opis_tovar{
+    padding:40px 60px;
+    padding-right: 150px;
+}
+.opis_tovar h1{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 700;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+}
+.rows12{
+    display: flex;
+    gap:40px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.price_item{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+}
+.ball{
+    color: rgb(153, 153, 153);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+       display: flex;
+    gap:8px;
+    align-items: center;
+}
+ /* Стили для контейнера с иконкой */
+        .tooltip-container {
+                position: relative;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+        }
+.colors_row{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    display: block;
+    margin-bottom: 18px;
+}
+.colors_block{
+    display:flex;
+    gap: 20px;
+}
+.colors_block input{
+    display:none
+}
+   /* Стили для контейнера с цветами */
+        .colors {
+           display:block;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        /* Стили для кружочков */
+.obv{
+      border: 1px solid #fff;
+        border-radius: 100%;
+    padding: 1px;
+}
+.obv.active{
+      border: 1px solid rgb(0, 0, 0);
+        border-radius: 100%;
+    padding: 1px;
+}
+        .color-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%; /* Делаем кружочки круглыми */
+            border: 1px solid #c7c7c7;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+.form_razmer{
+    margin-bottom: 20px;
+}
+.form_razmer select{
+    box-sizing: border-box;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 4px;
+height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 8px;
+    width: 100%;
+}
+.rows_tov_knop{
+    display: flex;
+    gap:16px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.rows_tov_knop button{
+    height:48px
+}
+.rows_tov_knop .btn-add-cart{
+    width:calc(100% - 66px);
+    max-width: 100%;
+}
+.rows_tov_knop .btn-favor{
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.plusrt{
+    display: block;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.plusrt .item{
+    display: flex;
+    gap:12px;
+    align-items: center;
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    margin-bottom:12px
+}
+.oldprice{
+color: rgb(218 71 71);
+    text-decoration: line-through;
+        margin-left: 10px;
+}
+.content_product_upsale{
+    margin-top:100px
+}
+.flextovar2 .itemstovar{
+    margin:0;
+}
+.swiper-container-dop{
+    margin-bottom:40px;
+        overflow: hidden;
+}
+.swiper-container-dop .itemstovar{
+    width:100%;
+        margin: 0;
+}
+.swiper-container-dop {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-container-dop .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

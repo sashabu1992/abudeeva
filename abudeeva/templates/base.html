@@ -1,0 +1,154 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ABUDEEVA{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/cera/stylesheet.css' %}">
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% block style_dob  %}{% endblock %}
+<meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="flex header">
+                <div class="nav1 flex">
+                    <div class="itemnav">
+                        <button><img src="{% static 'images/icon/bar.svg' %}" alt="меню">Меню</button>
+                    </div>
+                    <div class="catalog_nav">
+                        <a href="">Каталог
+                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 1L7 7L1 1" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                    </div>
+
+                </div>
+                <div class="logo">
+                    <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="abudeeva"></a>
+                </div>
+                <div class="knop">
+                    <div class="flex ">
+                        <button class="nobord"><img src="{% static 'images/icon/search.svg' %}" alt=""></button>
+                        <button class="nobord"><img src="{% static 'images/icon/heart.svg' %}" alt=""></button>
+                         <a href="{% url 'lk' %}" class="nobord"><img src="{% static 'images/icon/user.svg' %}" alt=""></a>
+                         <a href="{% url 'cart_detail' %}" class="nobord"><img src="{% static 'images/icon/cart.svg' %}" alt="">
+
+    (<span id="cart-count" class="cart-count-number">{{ cart.get_total_quantity }}</span>)
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+        {% block content %}
+        <!-- Содержимое страницы будет здесь -->
+        {% endblock %}
+
+
+{% block extra_js %}
+  <!-- Универсальный скрипт для добавления товара в корзину -->
+
+{% endblock %}
+
+
+
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+    <footer>
+        <span class="leftinfo">Designed by guzel khikmatullina</span>
+        <div class="container" style="background: url('{% static 'images/abude.png' %}');    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-size: contain;">
+
+            <div class="rowsfooter">
+                <div class="part1">
+                    <div class="wire">
+                        <span class="zf1">Днк-лаборатория стиля</span>
+                        <span class="zf2">Подпишитесь, чтобы первым узнавать
+о самых интересных предложениях</span>
+
+                        <form action="" class="podpiska">
+                            <input type="email" placeholder="E-mail" required>
+                            <button type="submit" class="btn">Подписаться</button>
+                        </form>
+
+
+                        <div class="flex flexsoc">
+                            <div class="block1">
+                                <span class="zak">Мы в соцсетях</span>
+                                <div class="flex socialk">
+                                    <a href="#"><img src="{% static 'images/icon/inst.png' %}" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/icon/vk.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                              <div class="block1">
+                                <span class="zak">Служба заботы</span>
+                                   <div class="flex socialk">
+                                    <a href="#"><img src="{% static 'images/icon/Telegram.png' %}" alt=""></a>
+                                    <a href="#"><img src="{% static 'images/icon/WhatsApp.png' %}" alt=""></a>
+                                       <a href="#"><img src="{% static 'images/icon/Mail_black.png.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="part2">
+                    <div class="item">
+                        <span class="kadd">Меню</span>
+                        <a href="">Личный кабинет</a>
+                         <a href="">Программа лояльности</a>
+                         <a href="">Покупателям</a>
+                         <a href="">О бренде</a>
+                    </div>
+                     <div class="item">
+                        <span class="kadd">каталог</span>
+                          <a href="">Новинки</a>
+                         <a href="">Sale %</a>
+                         <a href="">Капсульный гардероб</a>
+                         <a href="">Одежда</a>
+                         <a href="">Обувь</a>
+                         <a href="">Одежда для дома</a>
+                         <a href="">Аксессуары</a>
+                         <a href="">Premium Collection</a>
+                         <a href="">Home</a>
+                    </div>
+                     <div class="item">
+                        <span class="kadd">Контакты</span>
+                          <a href="tel:89999999999">8(999)999-99-99</a>
+                         <a href="mailto:hello@email.com">hello@email.com</a>
+                         <a href="">г.Москва, Никольская</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyre">
+                <span>2024 Abudeeva. все права защищены </span>
+                <a href="">политика конфиденциальности</a>
+            </div>
+
+        </div>
+    </footer>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

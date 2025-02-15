@@ -1,0 +1,27 @@
+<div class="sidebar-lk">
+    {% with url_name=request.resolver_match.url_name %}
+
+    <div class="item ">
+        <a href="{% url 'order_list' %}" {% if url_name == 'order_list' %}class="active" {% endif %}>МОИ заказы</a>
+    </div>
+     <div class="item">
+        <a href="{% url 'wishlist_list' %}" {% if url_name == 'wishlist_list' %}class="active" {% endif %}>Мой wishlist</a>
+    </div>
+   <div class="item">
+        <a href="{% url 'loyalty_card' %}" {% if url_name == 'loyalty_card' %}class="active" {% endif %}>моя КАРТА ЛОЯЛЬНОСТИ</a>
+    </div>
+       <div class="item">
+        <a href="" >МОИ АДРЕСА</a>
+    </div>
+       <div class="item">
+        <a href="" >МОИ СЕРТИФИКАТЫ</a>
+    </div>
+      <div class="item">
+        <a href="{% url 'profile' %}" {% if url_name == 'profile' %}class="active" {% endif %}>мой профиль</a>
+    </div>
+           <div class="item">
+        <a href="" >МОИ ПОДПИСКИ</a>
+    </div>
+    {% endwith %}
+    <a class="exit-btn"  href="{% url 'logout' %}">выйти</a>
+</div>

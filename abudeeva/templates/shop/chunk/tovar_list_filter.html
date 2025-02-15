@@ -1,0 +1,7 @@
+  {% if tovars %}
+                    {% for tovar in tovars %}
+                        {% include 'shop/chunk/tovar_card.html' %}
+                    {% endfor %}
+                {% else %}
+                    <p>Ничего не найдено</p>
+                {% endif %}

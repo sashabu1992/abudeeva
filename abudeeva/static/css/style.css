@@ -1,0 +1,1585 @@
+
+body{
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a, a:link, a:visited  {
+    text-decoration: none;
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+/* Common */
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+img, svg {
+	max-width: 100%;
+	height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input, textarea, button, select {
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button, input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+.container{
+      width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 820px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+}
+.flex{
+    display:flex;
+}
+body{
+    padding-top:94px;
+}
+header{
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(56, 50, 48);
+    background: rgb(255, 255, 255);
+    position: fixed;
+    width:100%;
+    top:0;
+    height: 94px;
+    z-index:999
+}
+header .container{
+    height:100%
+}
+.header{
+    height:100%;
+    justify-content: space-between;
+    align-items: center;
+    gap:20px;
+}
+.header .logo img{
+    max-width:118px;
+}
+header .knop .flex{
+    gap:20px
+}
+.nobord{
+    background:none;
+    border:none;
+    box-shadow: none;
+    padding:0;
+}
+.itemnav button{
+    display:flex;
+    gap:10px;
+    align-items: center;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 700;
+line-height: 19.2px;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+        background:none;
+    border:none;
+    box-shadow: none;
+}
+.catalog_nav a{
+      display:flex;
+    gap:10px;
+    align-items: center;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 700;
+line-height: 19.2px;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+        background:none;
+    border:none;
+    box-shadow: none;
+}
+.nav1{
+    align-items: center;
+    gap: 40px;
+}
+.breadcrumbs{
+    margin:30px 0;
+        display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.breadcrumbs{
+        color: rgb(192, 192, 192);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 140%;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+}
+.nazad a{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+            display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.breadcrumbs a{
+    color: rgb(192, 192, 192);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 140%;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+}
+.breadcrumbs span{
+    color: rgb(192, 192, 192);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 140%;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+}
+.flexcontent{
+    gap:40px;
+    margin-top:40px
+}
+.filter_sidebar{
+    width:200px;%
+}
+.flexright{
+    width:calc(100% - 240px)
+}
+.flextovar{
+    flex-wrap: wrap;
+}
+.itemstovar{
+    width:33.333%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom:30px
+}
+
+.itemstovar img{
+width:100%}
+.itemstovar .nametov{
+/* Desktop/Subtitle for card */
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    display:block;
+    margin-top:10px
+}
+.prop{
+    gap:15px;
+    margin-top:10px
+}
+.prop .price{
+    color: rgb(226, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+}
+.prop .old_price{
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+text-decoration-line: line-through;
+}
+
+#h1_Cart{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 700;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    margin-top:40px;
+    margin-bottom:30px
+}
+
+#cart_block{
+    margin-bottom:50px
+}
+.rowscart{
+    display: flex;
+    justify-content: space-between;
+    gap:60px;
+}
+.cart_list{
+    width:calc(100% - 420px)
+}
+.cart_info{
+    width:360px
+}
+.cart_info h2{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 700;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    margin-bottom:30px
+}
+.rows1{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 500;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    margin-bottom: 30px;
+}
+.rowsc{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 500;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+}
+.rowsc2{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 700;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    margin-top:30px
+}
+.rowsc3{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+color: rgb(153, 153, 153);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    margin-top:30px
+}
+.url_kink{
+    margin-top:30px
+}
+.url_kink a{
+    color: rgba(56, 50, 48, 0.5);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-decoration-line: underline;
+text-transform: uppercase;
+    display:block;
+    margin-bottom:10px
+}
+.cart-btn{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+    box-sizing: border-box;
+border: 1px solid rgb(0, 0, 0);
+border-radius: 4px;
+background: rgb(255, 255, 255);
+    height: 48px;
+    width:100%;
+    margin:20px auto;
+}
+.copert, .copert a{
+    color: rgba(56, 50, 48, 0.5);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 140%;
+letter-spacing: 0%;
+text-align: left;
+}
+.copert a{
+text-decoration: underline;
+}
+.cart-item{
+border-bottom: 1px solid rgb(56, 50, 48);
+    display: flex;
+    gap:20px;
+    padding:20px 0;
+    margin-bottom:20px
+}
+.cart-item .imgmini{
+    width:98px
+}
+.property{
+    color: rgba(56, 50, 48, 0.5);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+}
+.cart-item .namehar{
+    width:calc(100% - 98px - 100px - 40px)
+}
+.cart-item .cartfunc{
+        width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+.cart-item .imgmini img{
+    height:133px
+}
+.namehar h3{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    margin:0;
+    margin-bottom:12px
+}
+.remove-from-cart-btn:hover{
+    cursor:pointer
+}
+.priceitem{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+}
+.namehar{
+        display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-control button:hover {
+    background-color: #e9ecef;
+}
+
+.quantity-control .quantity-value {
+    margin: 0 10px;
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    min-width: 30px;
+    text-align: center;
+}
+#order-form{
+    margin-top:50px
+}
+.punkt2 .h2{
+      display:block;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 700;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    margin-bottom:20px
+}
+#order-form label.h2{
+    display:block;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 700;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    margin-bottom:20px
+}
+.delivery-method {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Отступ между пунктами */
+}
+
+.delivery-option {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px; /* Отступы внутри блока */
+    border-radius: 0px; /* Скругление углов */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.punkt{
+    margin-bottom:30px
+}
+.delivery-option:hover {
+    background-color: #f9f9f9; /* Изменение фона при наведении */
+}
+
+.delivery-option input[type="radio"] {
+    display: none; /* Скрываем стандартный radio */
+}
+
+.checkmark {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 50%; /* Круглый индикатор */
+    margin-right: 20px; /* Отступ между индикатором и текстом */
+}
+
+.delivery-option input[type="radio"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: black; /* Заливка индикатора при выборе */
+    border-radius: 50%;
+}
+
+.delivery-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery-title {
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+}
+
+.delivery-description {
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 500;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+}
+.rows_na a{
+
+    gap:30px;
+    max-width: 340px;
+    width: 100%;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+}
+.dann input{
+    box-sizing: border-box;
+        box-shadow: none;
+    border: none;
+border-bottom: 1px solid rgba(56, 50, 48, 0.3);
+    /* Поле ФИО */
+position: static;
+width: 340px;
+height: 36px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: center;
+gap: 8;
+padding: 8px;
+/* Inside Auto Layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 24px 0px;
+    color: rgba(0, 0, 0, 0.4);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+}
+.dann input::placeholder{
+color: rgba(0, 0, 0, 0.4);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+}
+.pay-method {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Отступ между пунктами */
+}
+
+.pay-option {
+    display: flex;
+    align-items: center;
+    border: 0px solid rgba(0, 0, 0, 0.2);
+    padding: 20px; /* Отступы внутри блока */
+    border-radius: 0px; /* Скругление углов */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pay-option:hover {
+    background-color: #f9f9f9; /* Изменение фона при наведении */
+}
+
+.pay-option input[type="radio"] {
+    display: none; /* Скрываем стандартный radio */
+}
+
+.pay .checkmark {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 50%; /* Круглый индикатор */
+    margin-right: 20px; /* Отступ между индикатором и текстом */
+}
+
+.pay-option input[type="radio"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: black; /* Заливка индикатора при выборе */
+    border-radius: 50%;
+}
+
+.pay-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.pay-title {
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 500;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+        display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pay-description {
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+}
+.btn-promo{
+    /* КНОПКА ПРИМЕНИТЬ */
+position: static;
+width: 144px;
+height: 36px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 8;
+padding: 8px;
+box-sizing: border-box;
+border: 1px solid rgb(56, 50, 48);
+border-radius: 4px;
+/* Inside Auto Layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+margin: 0px 16px;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+}
+.dann_fl{
+        display: flex;
+    align-items: center;
+}
+.sidebar-lk{
+    width: 360px;
+}
+.rows-order{
+    margin-top:40px;
+    display:flex;
+    gap:60px;
+    justify-content: space-between;
+}
+.order-info{
+    width:calc(100% - 60px - 360px)
+}
+.sidebar-lk .item a{
+    /* Frame 49681 (ЗАКАЗЫ) */
+position: static;
+width: 360px;
+height: 44px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: center;
+gap: 320;
+padding: 12px 10px 12px 10px;
+border-radius: 2px;
+/* Inside Auto Layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin-bottom:21px
+}
+.sidebar-lk .item a.active{
+    background: rgb(244, 244, 244);
+}
+.sidebar-lk .item a{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 500;
+line-height: 19.2px;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+}
+.order-details h2{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 500;
+line-height: 28px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    margin-top:0;
+}
+.punkt-order{
+margin-bottom:20px
+}
+.punkt-order .zag{
+color: rgb(153, 153, 153);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    display:block;
+        margin-bottom: 5px;
+}
+.punkt-order p{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    margin-bottom: 0;
+        margin-top: 0;
+}
+.order-details h3{
+    font-family: Cera Pro;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+}
+.order-details h3 span{
+    font-weight: 400;
+}
+
+.order-info .cart-item{
+    border-bottom: 1px solid rgb(233, 233, 233)!important;
+}
+#order-detail{
+    margin-bottom:50px
+}
+.exit-btn{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+    box-sizing: border-box;
+border: 1px solid rgb(0, 0, 0);
+border-radius: 4px;
+background: rgb(255, 255, 255);
+    height: 48px;
+    width:100%;
+    margin:20px auto;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+}
+#auth .cntr{
+text-align: center;
+        color: rgb(56, 50, 48);
+    font-family: Cera Pro;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+}
+.alert {
+    position: relative;
+    padding: 1rem 1.25rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width:560px;
+    width: 100%;
+}
+
+.alert-primary {
+    color: #084298;
+    background-color: #cfe2ff;
+    border-color: #b6d4fe;
+}
+
+.alert-secondary {
+    color: #41464b;
+    background-color: #e2e3e5;
+    border-color: #d3d6d8;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+.alert-light {
+    color: #636464;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+}
+
+.alert-dark {
+    color: #141619;
+    background-color: #d3d3d4;
+    border-color: #bcbebf;
+}
+
+/* Дополнительные стили для закрытия алертов (если нужно) */
+.alert-dismissible {
+    padding-right: 3rem;
+}
+
+.alert-dismissible .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.25rem 1rem;
+    color: inherit;
+}
+#auth .cntr a{
+    color: #000;
+    font-family: Cera Pro;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-decoration: underline;
+}
+#auth {
+    margin:40px 0
+}
+#auth .cntr h2{
+   color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: center;
+    text-transform: uppercase;
+}
+#auth .cntr .h3{
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: center;
+}
+#auth .cntr input{
+    margin:20px auto
+}
+#auth .cntr form{
+    margin:10px auto
+}
+form .btn-primary{
+    box-sizing: border-box;
+border: 1px solid rgb(0, 0, 0);
+border-radius: 4px;
+max-width: 278px;
+    width: 100%;
+height: 44px;
+background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+}
+input.form-control{
+        border:none;
+box-sizing: border-box;
+border-bottom: 1px solid rgba(56, 50, 48, 0.3);
+    color: rgba(0, 0, 0, 0.4);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    /* Поле номер телефона */
+max-width: 340px;
+            width: 100%;
+height: 36px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: center;
+gap: 8;
+padding: 8px;
+}
+input.form-control::placeholder{
+        color: rgba(0, 0, 0, 0.4);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+}
+.rows-card-lk{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.rows-card-lk .item{
+    box-sizing: border-box;
+border: 1px solid rgb(239, 239, 239);
+    width: calc(33.3333% - 20px);
+    margin-bottom:30px;
+
+}
+.rows-card-lk .item a{
+    height: 250px;
+    color: rgb(56, 50, 48);
+    font-family: Cera Pro;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    text-align: left;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.rows-card-lk .item a img{
+    height: 32px;
+}
+.order-hist{
+    box-sizing: border-box;
+border: 1px solid rgb(233, 233, 233);
+    margin-top:34px;
+    padding:20px
+}
+
+.order-hist .status span{
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    margin-bottom:10px;
+}
+.order-numb a{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+text-decoration-line: underline;
+}
+.order-dat{
+    color: rgb(150, 150, 150);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+}
+.orrder-punk{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    display: flex;
+    gap:10px;
+    align-items: center;
+    margin-top:5px
+}
+.orrder-punk img{
+    height: 20px;
+}
+.order-sostav{
+    margin-top:20px;
+    display: flex;
+    gap:10px;
+}
+.order-sostav img{
+    height:76px
+}
+.fil-list-ord{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 700;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+}
+.btn-primary{
+    box-sizing: border-box;
+border: 1px solid rgb(0, 0, 0);
+border-radius: 4px;
+max-width: 278px;
+    width: 100%;
+height: 44px;
+background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+}
+.order-hist .btn-primary{
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+.summ_order{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    margin-top:10px
+}
+
+/* Стили для tooltip */
+        .tooltip-container .tooltip-text {
+            visibility: hidden;
+            width: 160px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 150%; /* Расположение справа от элемента */
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Стрелка для tooltip */
+        .tooltip-container .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 100%; /* Стрелка слева от tooltip */
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent #555 transparent transparent;
+        }
+
+        /* Показ tooltip при наведении */
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        h2.podzag{
+            color: rgb(0, 0, 0);
+            display:block;
+            margin-bottom:20px;
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 12px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+        }
+        /* Основные стили для аккордеона */
+.accordion {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: none;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 700;
+line-height: 19.2px;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+        color: rgb(0, 0, 0);
+    font-family: Cera Pro;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.accordion-item.active .accordion-content {
+    padding: 15px 0;
+    max-height: 200px; /* Высота контента, можно изменить */
+}
+
+.accordion-item.active .accordion-arrow {
+    transform: rotate(180deg); /* Поворот стрелки */
+}
+.login_ball_block{
+    margin-top:100px;
+    padding:60px 0
+}
+.login_ball_block span.h3{
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 36px;
+font-weight: 400;
+line-height: 57.6px;
+letter-spacing: 0px;
+text-align: center;
+        display: block;
+}
+.btn:hover{
+    cursor:pointer
+}
+.login_ball_block{
+box-sizing: border-box;
+border-bottom: 1px solid rgb(0, 0, 0);
+border-top: 1px solid rgb(0, 0, 0);
+background: rgb(255, 255, 255);
+}
+.btn-vh{
+        color: rgb(0, 0, 0);
+    font-family: Cera Pro;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    height: 48px;
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:15px;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+}
+footer{
+    min-height:600px;
+    background:rgb(56, 50, 48);
+        position: relative;
+    display: flex;
+}
+footer .container{
+    height:100%;
+    padding-top:100px;
+    padding-bottom: 60px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.rowsfooter{
+    display: flex;
+    justify-content: space-between;
+}
+.part1{
+    width:50%
+}
+.zf1{
+    color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 30px;
+font-weight: 400;
+line-height: 57.6px;
+letter-spacing: 0%;
+text-align: left;
+    display:block;
+}
+.zf2{
+    color: rgba(255, 255, 255, 0.5);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 140%;
+letter-spacing: 0.6px;
+text-align: left;
+        display:block;
+}
+.wire{
+    max-width: 400px;
+}
+form.podpiska{
+    margin-top:40px;
+    display: flex;
+    gap:20px
+}
+form.podpiska input{
+        box-shadow: none;
+    border: none;
+box-sizing: border-box;
+border-bottom: 1px solid rgb(244, 244, 244);
+    padding: 8px;
+    height:48px;
+    color: rgba(255, 255, 255, 0.3);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    width:calc(100% - 144px - 20px)
+}
+form.podpiska input::placeholder{
+        color: rgba(255, 255, 255, 0.3);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+}
+form.podpiska button{
+border-radius: 2px;
+    border: none;
+background: rgb(255, 255, 255);
+    height: 48px;
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 8;
+padding: 8px;
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 120%;
+letter-spacing: 0%;
+text-align: left;
+    width: 144px;
+}
+.flexsoc{
+    gap:60px;
+    display: flex;
+    margin-top:60px
+}
+.flexsoc .zak{
+color: rgba(255, 255, 255, 0.5);
+font-family: Cera Pro;
+font-size: 13px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    display: block;
+    margin-bottom: 20px;
+}
+.socialk{
+    gap:15px
+}
+.part1{
+    width: 50%;
+}
+.part2{
+    width: 50%;
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+.part2 .item{
+    width:33%
+}
+.kadd{
+    color: rgb(129, 122, 112);
+font-family: Cera Pro;
+font-size: 13px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    display: block;
+    margin-bottom: 30px;
+        top: 20px;
+}
+.part2 .item a{
+    color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+    display: block;
+    margin-bottom: 15px;
+}
+.copyre{
+    display: flex;
+    gap:40px;
+    position: absolute;
+    bottom:20px
+}
+.copyre span, .copyre a{
+    color: rgb(140, 140, 140);
+font-family: Cera Pro;
+font-size: 10px;
+font-weight: 400;
+line-height: 10px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+}
+.leftinfo{
+    border-radius: 10px 10px 0 0;
+    background: rgb(255, 255, 255);
+    color: rgb(140, 140, 140);
+    font-family: Inter;
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 10px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+    position: absolute;
+    width: 198px;
+    height: 26px;
+        right: calc(0% - 86px);
+    bottom: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8;
+    padding: 8px;
+    transform: rotate(-90.00deg);
+}

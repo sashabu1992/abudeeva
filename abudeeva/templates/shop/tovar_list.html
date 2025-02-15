@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<div class="container">
+    <!-- Хлебные крошки -->
+    <div class="breadcrumbs">
+        <a href="{% url 'index' %}">Главная</a> |
+        {% for crumb in breadcrumbs %}
+            <a href="{% url 'category_tovar' slug_category=crumb.slug %}">{{ crumb.h1 }}</a> /
+        {% endfor %}
+        <span>{{ category.h1 }}</span>
+    </div>
+
+    <!-- Кнопка "Назад" -->
+    <div class="nazad">
+        <a href="javascript:history.back()">
+            <svg width="20.501953" height="6.660950" viewBox="0 0 20.502 6.66095" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs/>
+                <path id="Vector 2" d="M1.7 2.83L3.68 0.85C3.88 0.65 3.88 0.34 3.68 0.14C3.48 -0.05 3.17 -0.05 2.97 0.14L0.14 2.97C-0.05 3.17 -0.05 3.48 0.14 3.68L2.97 6.51C3.17 6.71 3.48 6.71 3.68 6.51C3.88 6.31 3.88 6 3.68 5.8L1.7 3.83L20.5 3.83L20.5 2.83L1.7 2.83Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
+            </svg>
+            назад
+        </a>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="content flex flexcontent">
+        <!-- Фильтры -->
+        <div class="filter_sidebar">
+            <h3>Фильтры</h3>
+            <form id="filter-form">
+                <!-- Фильтр по цене -->
+                <div class="filter-section">
+                    <h4>Цена</h4>
+                    <div class="price-range">
+                        <label for="min-price">От:</label>
+                        <input type="number" id="min-price" name="min_price" min="0" value="{{ min_price }}" placeholder="0">
+                        <label for="max-price">До:</label>
+                        <input type="number" id="max-price" name="max_price" min="0" value="{{ max_price }}" placeholder="10000">
+                    </div>
+                    <div id="price-slider"></div>
+                </div>
+
+              <!-- Фильтр по цвету -->
+<div class="filter-section">
+    <h4>Цвет</h4>
+    <div class="color-filters">
+        {% for color in colors %}
+            <label>
+             <input type="checkbox" name="colors" value="{{ color.id }}">
+                <span class="color-circle" style="background-color: {{ color.code }};    height: 10px;
+    width: 10px;
+    display: block;" title="{{ color.name }}"></span>
+            </label>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Фильтр по размеру -->
+<div class="filter-section">
+    <h4>Размер</h4>
+    <div class="size-filters">
+        {% for size in sizes %}
+            <label>
+                <input type="checkbox" name="sizes" value="{{ size.id }}">
+                {{ size.name }}
+            </label>
+        {% endfor %}
+    </div>
+</div>
+
+                <!-- Кнопка "Применить фильтры" -->
+                <button type="button" id="apply-filters">Применить</button>
+               <button type="button" id="reset-filters">Сбросить фильтры</button>
+            </form>
+        </div>
+
+        <!-- Список товаров -->
+        <div class="right flexright">
+            <div class="flex flextovar">
+                {% if tovars %}
+                    {% for tovar in tovars %}
+                        {% include 'shop/chunk/tovar_card.html' %}
+                    {% endfor %}
+                {% else %}
+                    <p>В этой категории пока нет товаров.</p>
+
+                {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function () {
+    // Инициализация слайдера для цены
+    $("#price-slider").slider({
+        range: true,
+        min: {{ min_price }},
+        max: {{ max_price }},
+        values: [{{ min_price }}, {{ max_price }}],
+        slide: function (event, ui) {
+            $("#min-price").val(ui.values[0]);
+            $("#max-price").val(ui.values[1]);
+            applyFilters(); // Отправляем фильтры при изменении слайдера
+        }
+    });
+
+    // Обработка изменения полей ввода цены
+    $("#min-price, #max-price").on("input", function () {
+        let minPrice = parseInt($("#min-price").val());
+        let maxPrice = parseInt($("#max-price").val());
+
+        // Обновляем слайдер
+        $("#price-slider").slider("values", [minPrice, maxPrice]);
+
+        // Отправляем фильтры
+        applyFilters();
+    });
+
+    // Обработка изменения чекбоксов цветов и размеров
+    $("input[name='colors'], input[name='sizes']").change(function () {
+        applyFilters(); // Отправляем фильтры при изменении чекбоксов
+    });
+
+    // Обработка нажатия на кнопку "Сбросить фильтры"
+    $("#reset-filters").click(function () {
+        resetFilters();
+    });
+
+    // Функция для отправки данных фильтров на сервер
+    function applyFilters() {
+        // Получаем значения из полей ввода
+        let minPrice = $("#min-price").val();
+        let maxPrice = $("#max-price").val();
+
+        // Устанавливаем значения по умолчанию, если поля пустые
+        if (!minPrice) minPrice = {{ min_price }};
+        if (!maxPrice) maxPrice = {{ max_price }};
+
+        // Обновляем значения в полях ввода
+        $("#min-price").val(minPrice);
+        $("#max-price").val(maxPrice);
+
+        // Собираем данные формы
+        const formData = $("#filter-form").serialize();
+
+        // Отправляем AJAX-запрос
+        $.ajax({
+            url: "{% url 'filter_tovars' %}",
+            type: "GET",
+            data: formData,
+            success: function (response) {
+                // Обновляем список товаров
+                $(".flextovar").html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error("Ошибка при отправке запроса:", error);
+            }
+        });
+    }
+
+    // Функция для сброса фильтров
+    function resetFilters() {
+        // Сбрасываем значения полей цены
+        $("#min-price").val({{ min_price }});
+        $("#max-price").val({{ max_price }});
+
+        // Сбрасываем слайдер цены
+        $("#price-slider").slider("values", [{{ min_price }}, {{ max_price }}]);
+
+        // Снимаем выделение с чекбоксов цветов и размеров
+        $("input[name='colors']").prop("checked", false);
+        $("input[name='sizes']").prop("checked", false);
+
+        // Отправляем AJAX-запрос для получения исходного списка товаров
+        $.ajax({
+            url: "{% url 'category_tovar' slug_category=category.slug %}",
+            type: "GET",
+            success: function (response) {
+                // Обновляем список товаров
+                $(".flextovar").html($(response).find(".flextovar").html());
+            },
+            error: function (xhr, status, error) {
+                console.error("Ошибка при отправке запроса:", error);
+            }
+        });
+    }
+});
+</script>
+
+
+{% endblock %}

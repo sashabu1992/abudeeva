@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+ {% load thumbnail %}
+ {% load static %}
+
+{% block content %}
+<section id="cart_block">
+<div class="container">
+
+    <div class="breadcrumbs">
+        <a href="{% url 'index' %}">Главная</a> |
+
+        <span>Корзина</span>
+    </div>
+
+    <div class="nazad">
+        <a href="javascript:history.back()">
+            <svg width="20.501953" height="6.660950" viewBox="0 0 20.502 6.66095" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs/>
+                <path id="Vector 2" d="M1.7 2.83L3.68 0.85C3.88 0.65 3.88 0.34 3.68 0.14C3.48 -0.05 3.17 -0.05 2.97 0.14L0.14 2.97C-0.05 3.17 -0.05 3.48 0.14 3.68L2.97 6.51C3.17 6.71 3.48 6.71 3.68 6.51C3.88 6.31 3.88 6 3.68 5.8L1.7 3.83L20.5 3.83L20.5 2.83L1.7 2.83Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
+            </svg>
+            назад
+        </a>
+    </div>
+
+    <h1 id="h1_Cart">Корзина: <span id="cart-count-h1" class="cart-count-text"> {{ cart.get_total_quantity|pluralize_products }}</span></h1>
+
+<div class="row rowscart">
+    <div class="cart_list">
+           <div class="cart-items">
+        {% if cart_items %}
+{% for item in cart_items %}
+    <div class="cart-item" data-key="{{ item.key }}">
+        <div class="imgmini">
+            <a href="{{ item.tovar.get_absolute_url }}"><img src="{{ item.tovar.zast|thumbnail_url:'cart_img' }}" alt=""></a>
+        </div>
+        <div class="namehar">
+            <div>
+                <a href="{{ item.tovar.get_absolute_url }}"><h3>{{ item.tovar.h1 }}</h3></a>
+                <div class="property">
+                    Арт: {{ item.tovar.article }},
+                    {% for key, value in item.properties.items %}
+                        <span>{{ key }}: {{ value }}</span>,
+                    {% endfor %}
+                    кол-во: <span class="item-quantity">{{ item.quantity }}</span>
+                </div>
+            </div>
+            <div>
+                <div class="quantity-control" data-key="{{ item.key }}">
+                    <button class="quantity-decrease" data-key="{{ item.key }}">-</button>
+                    <span class="quantity-value">{{ item.quantity }}</span>
+                    <button class="quantity-increase" data-key="{{ item.key }}">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="cartfunc">
+            <!-- Кнопка удаления -->
+            <span class="remove-from-cart-btn" data-key="{{ item.key }}">
+             <img src="{% static 'images/icon/remove_cart.png' %}" alt="">
+            </span>
+            <span class="priceitem">{{ item.price }} ₽</span>
+        </div>
+    </div>
+
+{% endfor %}
+
+
+            <!-- Форма оформления заказа -->
+            <div class="order-form">
+
+                <form id="order-form" method="post" action="{% url 'create_order' %}">
+                  {% csrf_token %}
+<div class="punkt">
+                        <label class="h2" for="id_delivery_method">Способ доставки</label>
+
+   <div class="delivery-method">
+    <label class="delivery-option">
+        <input type="radio" name="delivery_method" value="courier" checked>
+        <span class="checkmark"></span>
+        <div class="delivery-text">
+            <span class="delivery-title">Курьерская доставка</span>
+            <span class="delivery-description">Доставка курьером до двери</span>
+        </div>
+    </label>
+
+    <label class="delivery-option">
+        <input type="radio" name="delivery_method" value="pickup">
+        <span class="checkmark"></span>
+        <div class="delivery-text">
+            <span class="delivery-title">Пункт самовывоза</span>
+            <span class="delivery-description">СДЭК, Boxberry, Почта России</span>
+        </div>
+    </label>
+</div>
+</div>
+
+                    <div class="punkt">
+                        <label class="h2" >Контактные данные</label>
+
+                        <div class="rows_na">
+                            <div><a href="">Уже есть аккаунт?</a></div>
+                        </div>
+<div class="dann">
+                    <input type="text" id="id_first_name" placeholder="Имя*" name="first_name" value="{{ form.first_name.value|default_if_none:'' }}" required>
+                    <input type="text" id="id_last_name" placeholder="Фамилия*"  name="last_name" value="{{ form.last_name.value|default_if_none:'' }}" required>
+                    <input type="email" id="id_email" placeholder="Email*"  name="email" value="{{ form.email.value|default_if_none:'' }}" required>
+                    <input type="text" id="id_phone" name="phone*" placeholder="Телефон" value="{{ form.phone.value|default_if_none:'' }}" required>
+                    <input type="text" id="id_address" name="address*"  placeholder="Адрес доставки" value="{{ form.address.value|default_if_none:'' }}" required>
+                    <input type="text" id="id_postal_code" name="postal_code*" placeholder="Почтовый индекс" value="{{ form.postal_code.value|default_if_none:'' }}" required>
+                    <input type="text" id="id_city" name="city" placeholder="Город*" value="{{ form.city.value|default_if_none:'' }}" required>
+    </div>
+       </div>
+                     <div class="punkt">
+                        <label class="h2" >Способ оплаты</label>
+                <div class="pay-method">
+    <label class="pay-option">
+        <input type="radio" name="payment_method" value="sbp" checked>
+        <span class="checkmark"></span>
+        <div class="pay-text">
+            <span class="pay-title">Оплата через СБП <img src="{% static 'images/icon/sbp.png' %}" alt=""></span>
+            <span class="pay-description">-10% при оплате онлайн</span>
+        </div>
+    </label>
+
+                        <label class="pay-option">
+        <input type="radio" name="payment_method" value="card" >
+        <span class="checkmark"></span>
+        <div class="pay-text">
+            <span class="pay-title">Оплата картой онлайн</span>
+            <span class="pay-description">-10% при оплате онлайн</span>
+        </div>
+    </label>
+
+                      <label class="pay-option">
+        <input type="radio" name="payment_method" value="doli" >
+        <span class="checkmark"></span>
+        <div class="pay-text">
+            <span class="pay-title">Оплата долями</span>
+            <span class="pay-description">4 платежа по 1 399 ₽</span>
+        </div>
+    </label>
+
+                       <label class="pay-option">
+        <input type="radio" name="payment_method" value="sert" >
+        <span class="checkmark"></span>
+        <div class="pay-text">
+            <span class="pay-title">Подарочный сертификат</span>
+            <span class="pay-description">Потребуется номер и код активации</span>
+        </div>
+    </label>
+
+</div>
+      </div>
+
+
+                </form>
+
+            <div class="punkt2">
+                        <label class="h2" >Промокод</label>
+                      <div class="dann">
+                          <form class="dann_fl" action="">
+                    <input type="text" id="id_promocode" placeholder="Промокод" name="promokode" value="" >
+                          <button class="btn-promo">ПРИМЕНИТЬ</button>
+                    </form>
+                             </div>
+   </div>
+            </div>
+        {% else %}
+            <p>Ваша корзина пуста.</p>
+        {% endif %}
+    </div>
+    </div>
+    <div class="cart_info">
+       <h2>Ваш заказ</h2>
+        <div class="rows1">
+            <img src="{% static 'images/icon/Gift.png' %}" alt="">
+-10% при оплате онлайн *
+        </div>
+
+        <div class="rowsc">
+            <div class="item1">Товары (<span class="cart-count-number">{{ cart.get_total_quantity }}</span>):</div>
+            <div class="iten2"><span id="total-price" class="total-price">{{ cart.get_total_price|format_price }}</span> ₽</div>
+        </div>
+
+          <div class="rowsc">
+            <div class="item1">Доставка: </div>
+            <div class="iten2"><span id="total-price-delivery" class="total-delivery">0</span> ₽</div>
+        </div>
+
+         <div class="rowsc2">
+            <div class="item1">ИТОГО </div>
+            <div class="iten2"><span id="total-price2" class="total-price">{{ cart.get_total_price|format_price }}</span> ₽</div>
+        </div>
+        
+        <div class="url_kink">
+            <a href="">УСЛОВИЯ ДОставки </a>
+            <a href="">УСЛОВИЯ обмена и возврата </a>
+        </div>
+
+<button class="cart-btn" id="cart-send">оформить заказ</button>
+
+        <div class="copert">
+            Нажимая на кнопку "Оформить заказ", я подтверждаю согласие с <a href="">политикой конфиденциальности,</a> правилами работы интернет-магазина и программы лояльности
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</div>
+</section>
+
+{% endblock %}

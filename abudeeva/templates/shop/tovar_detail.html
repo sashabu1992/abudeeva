@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+ {% load static %}
+
+{% block style_dob  %}
+    <link rel="stylesheet" href="{% static 'css/style_tovar_detail.css' %}">
+
+{% endblock %}
+{% block content %}
+<div class="container">
+
+    <div class="breadcrumbs">
+        <a href="{% url 'index' %}">Главная</a> |
+        {% for crumb in breadcrumbs %}
+            <a href="{% url 'category_tovar' slug_category=crumb.slug %}">{{ crumb.h1 }}</a> /
+        {% endfor %}
+        <span>{{ tovar.h1 }}</span>
+    </div>
+
+    <div class="nazad">
+        <a href="javascript:history.back()">
+            <svg width="20.501953" height="6.660950" viewBox="0 0 20.502 6.66095" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs/>
+                <path id="Vector 2" d="M1.7 2.83L3.68 0.85C3.88 0.65 3.88 0.34 3.68 0.14C3.48 -0.05 3.17 -0.05 2.97 0.14L0.14 2.97C-0.05 3.17 -0.05 3.48 0.14 3.68L2.97 6.51C3.17 6.71 3.48 6.71 3.68 6.51C3.88 6.31 3.88 6 3.68 5.8L1.7 3.83L20.5 3.83L20.5 2.83L1.7 2.83Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
+            </svg>
+            назад
+        </a>
+    </div>
+
+    <div class="content_product flex">
+        <div class="left">
+            {% include 'shop/chunk/gallery.html' %}
+        </div>
+        <div class="right">
+            <div class="opis_tovar">
+                <h1>{{ tovar.h1 }}</h1>
+
+
+            <div class="rows12">
+                <div class="item price_item">
+                    <div class="price">{{ tovar.price }} ₽ {% if tovar.old_price %}<span class="oldprice">{{ tovar.old_price }} ₽</span>{% endif %}</div>
+                </div>
+                <div class="item">
+                    <div class="ball">+199 AB
+                        <div class="tooltip-container">
+    <img src="{% static 'images/icon/info.png' %}" alt="Информация">
+    <span class="tooltip-text">Начислиться на накопительный счет</span>
+</div>
+                    </div>
+
+                </div>
+            </div>
+              <!-- tovar_detail.html -->
+<form method="post" action="{% url 'add_to_cart' tovar.id %}" class="add-to-cart-form">
+    {% csrf_token %}
+    <div class="properties">
+        {% for name, value in properties.items %}
+            <div class="property">
+
+                {% if name == 'Цвет' or name == 'colors' %}
+
+                    <div class="colors">
+                     <span class="colors_row">{{ name }}: <span class="colors_name">{{ value.first.name }}</span></span>
+                    <div class="colors_block">
+                        {% for color in value.all %}
+                            <label>
+                                <input type="radio" name="color" value="{{ color.id }}" data-name="{{ color.name }}" required
+                                 {% if forloop.first %}checked{% endif %} >
+                                <div class="obv"><div class="color-circle" style="background-color: {{ color.code }};" title="{{ color.name }}"></div></div>
+                            </label>
+                        {% endfor %}
+                    </div>
+                    </div>
+                {% elif name == 'Размер' or name == 'sizes' %}
+                    <div class="block_razmer">
+                    <div class="form_razmer">
+  <select required name="size">
+    <!--
+      This is how we can do "placeholder" options.
+      note: "required" attribute is on the select
+    -->
+    <option value=""
+            hidden
+    >Выберите размер</option>
+
+{% for size in value.all %}
+ <option value="{{ size.id }}">{{ size.code }}</option>
+
+                    {% endfor %}
+
+  </select>
+</div>
+
+                    </div>
+                {% else %}
+                    <span>{{ value }}</span>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+<div class="rows_tov_knop">
+     <button type="submit" class="btn btn-primary btn-add-cart">Добавить в корзину</button>
+     <button  class="btn btn-primary btn-favor"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.3671 3.84166C16.9415 3.41583 16.4361 3.07803 15.8799 2.84757C15.3237 2.6171 14.7275 2.49847 14.1254 2.49847C13.5234 2.49847 12.9272 2.6171 12.371 2.84757C11.8147 3.07803 11.3094 3.41583 10.8838 3.84166L10.0004 4.725L9.11709 3.84166C8.25735 2.98192 7.09129 2.49892 5.87542 2.49892C4.65956 2.49892 3.4935 2.98192 2.63376 3.84166C1.77401 4.70141 1.29102 5.86747 1.29102 7.08333C1.29102 8.29919 1.77401 9.46525 2.63376 10.325L3.51709 11.2083L10.0004 17.6917L16.4838 11.2083L17.3671 10.325C17.7929 9.89937 18.1307 9.39401 18.3612 8.83779C18.5917 8.28158 18.7103 7.6854 18.7103 7.08333C18.7103 6.48126 18.5917 5.88508 18.3612 5.32887C18.1307 4.77265 17.7929 4.26729 17.3671 3.84166Z" stroke="#383230" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+</div>
+
+</form>
+
+            <div class="plusrt">
+                <div class="item">
+                    <div class="lic"><img src="{% static 'images/icon/pl1.png' %}" alt=""></div>
+                    <div class="name_lic">Бесплатная доставка от 5 000 ₽</div>
+                </div>
+                <div class="item">
+                    <div class="lic"><img src="{% static 'images/icon/pl2.png' %}" alt=""></div>
+                    <div class="name_lic">–10% при оплате онлайн</div>
+                </div>
+                <div class="item">
+                    <div class="lic"><img src="{% static 'images/icon/pl3.png' %}" alt=""></div>
+                    <div class="name_lic">Доступна оплата после примерки</div>
+                </div>
+            </div>
+
+
+            <div class="accordion">
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span class="accordion-title">ОПИСАНИЕ И ОБМЕРЫ</span>
+            <span class="accordion-arrow"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 1L7 7L1 1" stroke="#383230" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span> <!-- Стрелка вниз -->
+        </div>
+        <div class="accordion-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur debitis deleniti eum excepturi facere fuga impedit iusto laborum magnam molestias nemo, pariatur quam quibusdam quis recusandae saepe sapiente vero?</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span class="accordion-title">ДОСТАВКА И ВОЗВРАТ</span>
+            <span class="accordion-arrow"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 1L7 7L1 1" stroke="#383230" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span> <!-- Стрелка вниз -->
+        </div>
+        <div class="accordion-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos explicabo hic ipsam magnam sit tempora totam? Aliquid culpa cum, deleniti, dolores facilis harum maiores nulla quasi reprehenderit sed sit tempora. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi dolorem eos fuga fugiat fugit illum in iusto nihil praesentium provident quaerat qui quo, repellat reprehenderit sint sit. Est, impedit.</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+<div class="content_product_upsale">
+    <h2 class="podzag">Похожие товары</h2>
+
+   <div class="swiper-container-dop">
+    <div class="swiper-wrapper">
+        {% if tovars %}
+            {% for tovar in tovars %}
+                <div class="swiper-slide">
+                    {% include 'shop/chunk/tovar_card.html' %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.swiper-container-dop', {
+            slidesPerView: 3, // Количество карточек в ряду
+            spaceBetween: 20, // Отступ между карточками
+            loop: true, // Бесконечный слайдер
+            autoplay: {
+                delay: 3000, // Автопрокрутка каждые 3 секунды
+                disableOnInteraction: false, // Продолжать автопрокрутку после взаимодействия
+            },
+
+        });
+    });
+</script>
+</div>
+
+ {% if not user.is_authenticated %}
+<div class="login_ball_block">
+<div class="container">
+    <span class="h3">Войдите, чтобы получать баллы за покупки</span>
+    <a href="{%  url 'lk' %}"  class="btn btn-primary btn-vh"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_7757_6035)">
+<circle cx="6.66667" cy="3.99992" r="2.66667" stroke="#383230"/>
+<path d="M11.9997 11.6667C11.9997 13.3236 11.9997 14.6667 6.66634 14.6667C1.33301 14.6667 1.33301 13.3236 1.33301 11.6667C1.33301 10.0099 3.72082 8.66675 6.66634 8.66675C9.61186 8.66675 11.9997 10.0099 11.9997 11.6667Z" stroke="#383230"/>
+<path d="M12.0289 8.24364L12.3247 7.84051L12.3247 7.84051L12.0289 8.24364ZM12.667 5.79415L12.3212 6.1553C12.5146 6.34043 12.8194 6.34043 13.0128 6.1553L12.667 5.79415ZM13.3051 8.24364L13.0093 7.84051L13.0093 7.84051L13.3051 8.24364ZM12.667 8.55162L12.667 9.05162H12.667L12.667 8.55162ZM12.3247 7.84051C12.046 7.63606 11.7391 7.38075 11.5066 7.112C11.2611 6.82814 11.167 6.60746 11.167 6.46441H10.167C10.167 6.97764 10.4611 7.43182 10.7503 7.76614C11.0525 8.11557 11.4264 8.42173 11.7331 8.64676L12.3247 7.84051ZM11.167 6.46441C11.167 6.08037 11.342 5.91327 11.4949 5.85968C11.6618 5.80118 11.9708 5.81982 12.3212 6.1553L13.0128 5.433C12.4632 4.90677 11.7722 4.7028 11.1641 4.91598C10.542 5.13407 10.167 5.73295 10.167 6.46441H11.167ZM13.6009 8.64677C13.9076 8.42173 14.2815 8.11557 14.5837 7.76614C14.8729 7.43182 15.167 6.97764 15.167 6.4644H14.167C14.167 6.60746 14.0728 6.82815 13.8274 7.11201C13.5949 7.38076 13.2879 7.63606 13.0093 7.84051L13.6009 8.64677ZM15.167 6.4644C15.167 5.73295 14.792 5.13407 14.1699 4.91598C13.5617 4.7028 12.8708 4.90677 12.3212 5.433L13.0128 6.1553C13.3632 5.81982 13.6722 5.80118 13.8391 5.85968C13.9919 5.91327 14.167 6.08037 14.167 6.4644H15.167ZM11.7331 8.64676C11.9789 8.82708 12.2547 9.05162 12.667 9.05162L12.667 8.05162C12.6507 8.05162 12.6407 8.05158 12.6044 8.03244C12.5471 8.0022 12.4755 7.95117 12.3247 7.84051L11.7331 8.64676ZM13.0093 7.84051C12.8585 7.95118 12.7869 8.00221 12.7296 8.03244C12.6933 8.05158 12.6833 8.05162 12.667 8.05162L12.667 9.05162C13.0793 9.05162 13.3551 8.82708 13.6009 8.64677L13.0093 7.84051Z" fill="#383230"/>
+</g>
+<defs>
+<clipPath id="clip0_7757_6035">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+ Войти</a>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
