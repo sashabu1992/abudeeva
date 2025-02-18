@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
+ {% load static %}
 
+{% block style_dob  %}
+    <link rel="stylesheet" href="{% static 'css/style_tovar_detail.css' %}">
+
+{% endblock %}
 {% block content %}
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
-<div class="container">
+<div class="container" id="bkj2">
     <!-- Хлебные крошки -->
     <div class="breadcrumbs">
         <a href="{% url 'index' %}">Главная</a> |
@@ -14,70 +19,58 @@
     </div>
 
     <!-- Кнопка "Назад" -->
-    <div class="nazad">
-        <a href="javascript:history.back()">
-            <svg width="20.501953" height="6.660950" viewBox="0 0 20.502 6.66095" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs/>
-                <path id="Vector 2" d="M1.7 2.83L3.68 0.85C3.88 0.65 3.88 0.34 3.68 0.14C3.48 -0.05 3.17 -0.05 2.97 0.14L0.14 2.97C-0.05 3.17 -0.05 3.48 0.14 3.68L2.97 6.51C3.17 6.71 3.48 6.71 3.68 6.51C3.88 6.31 3.88 6 3.68 5.8L1.7 3.83L20.5 3.83L20.5 2.83L1.7 2.83Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
-            </svg>
-            назад
-        </a>
+    <div class="zah_h1_block">
+        <div class="item">
+            <h1>{{ category.h1 }}</h1>
+        </div>
+        <div class="item">
+            <div class="filter_opent">
+                <span>Фильтры <!--(<span class="count_filt">0</span>)--></span>
+                <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.45973 0.8C2.24263 0.8 1.26973 1.765 1.26973 2.9385C1.26973 4.112 2.24263 5.0769 3.45973 5.0769C4.67683 5.0769 5.64963 4.112 5.64963 2.9385C5.64963 1.765 4.67683 0.8 3.45973 0.8ZM0.469727 2.9385C0.469727 1.3081 1.81603 0 3.45973 0C4.96653 0 6.22343 1.0993 6.42223 2.5385H18.0697V3.3385H6.42223C6.22343 4.7776 4.96653 5.8769 3.45973 5.8769C1.81603 5.8769 0.469727 4.5689 0.469727 2.9385ZM15.4797 8.9231C14.2626 8.9231 13.2898 9.888 13.2898 11.0615C13.2898 12.235 14.2626 13.2 15.4797 13.2C16.6968 13.2 17.6697 12.235 17.6697 11.0615C17.6697 9.888 16.6968 8.9231 15.4797 8.9231ZM12.5172 10.6615C12.716 9.2224 13.9729 8.1231 15.4797 8.1231C17.1234 8.1231 18.4697 9.4311 18.4697 11.0615C18.4697 12.6919 17.1234 14 15.4797 14C13.9729 14 12.716 12.9007 12.5172 11.4615H0.869726V10.6615H12.5172Z" fill="black"/>
+</svg>
+            </div>
+        </div>
     </div>
+
+
+<div class="categoryu_menu">
+    <div class="menucategory">
+        <!-- Ссылка "Все" на родительскую категорию -->
+        {% if category.parent %}
+            <span class="{% if category.parent.slug == category.slug %}active{% endif %}">
+                <a href="{% url 'category_tovar' category.parent.slug %}">Все</a>
+            </span>
+        {% else %}
+            <!-- Если текущая категория - корневая, то "Все" активна -->
+            <span class="active">
+                <a href="{% url 'category_tovar' category.slug %}">Все</a>
+            </span>
+        {% endif %}
+
+        <!-- Выводим все подкатегории родителя -->
+        {% if category.parent %}
+            {% for subcategory in category.parent.get_children %}
+                <span class="{% if subcategory.slug == category.slug %}active{% endif %}">
+                    <a href="{% url 'category_tovar' subcategory.slug %}">{{ subcategory.h1 }}</a>
+                </span>
+            {% endfor %}
+        {% else %}
+            <!-- Если текущая категория - корневая, выводим её подкатегории -->
+            {% for subcategory in category.get_children %}
+                <span class="{% if subcategory.slug == category.slug %}active{% endif %}">
+                    <a href="{% url 'category_tovar' subcategory.slug %}">{{ subcategory.h1 }}</a>
+                </span>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
 
     <!-- Основной контент -->
-    <div class="content flex flexcontent">
-        <!-- Фильтры -->
-        <div class="filter_sidebar">
-            <h3>Фильтры</h3>
-            <form id="filter-form">
-                <!-- Фильтр по цене -->
-                <div class="filter-section">
-                    <h4>Цена</h4>
-                    <div class="price-range">
-                        <label for="min-price">От:</label>
-                        <input type="number" id="min-price" name="min_price" min="0" value="{{ min_price }}" placeholder="0">
-                        <label for="max-price">До:</label>
-                        <input type="number" id="max-price" name="max_price" min="0" value="{{ max_price }}" placeholder="10000">
-                    </div>
-                    <div id="price-slider"></div>
-                </div>
-
-              <!-- Фильтр по цвету -->
-<div class="filter-section">
-    <h4>Цвет</h4>
-    <div class="color-filters">
-        {% for color in colors %}
-            <label>
-             <input type="checkbox" name="colors" value="{{ color.id }}">
-                <span class="color-circle" style="background-color: {{ color.code }};    height: 10px;
-    width: 10px;
-    display: block;" title="{{ color.name }}"></span>
-            </label>
-        {% endfor %}
-    </div>
-</div>
-
-<!-- Фильтр по размеру -->
-<div class="filter-section">
-    <h4>Размер</h4>
-    <div class="size-filters">
-        {% for size in sizes %}
-            <label>
-                <input type="checkbox" name="sizes" value="{{ size.id }}">
-                {{ size.name }}
-            </label>
-        {% endfor %}
-    </div>
-</div>
-
-                <!-- Кнопка "Применить фильтры" -->
-                <button type="button" id="apply-filters">Применить</button>
-               <button type="button" id="reset-filters">Сбросить фильтры</button>
-            </form>
-        </div>
-
+    <div class="content ">
         <!-- Список товаров -->
-        <div class="right flexright">
+        <div class="right flex_tovarlist">
             <div class="flex flextovar">
                 {% if tovars %}
                     {% for tovar in tovars %}
@@ -95,7 +88,134 @@
 </div>
 
 
+<!-- Блок фильтра -->
+<div class="filter_sidebar">
+    <div class="filter_overlay"></div> <!-- Затемненный фон -->
+    <div class="filter_content">
+
+    <div class="utr">
+        <span class="h3">Фильтры</span>
+    <span class="filter_close" id="reset-filters">Сбросить фильтры &times;</span>
+    </div>
+        <form id="filter-form" class="accordion">
+            <!-- Фильтр по цене -->
+
+
+
+
+            <div class="filter-section accordion-item active">
+                  <div class="accordion-header">
+                <span class="h4 accordion-title">Цена</span>
+                            <span class="accordion-arrow"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 1L7 7L1 1" stroke="#383230" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span> <!-- Стрелка вниз -->
+            </div>
+                <div class="accordion-content">
+                <div class="price-range">
+                    <div>
+                    <label for="min-price">От:</label>
+                    <input type="number" id="min-price" name="min_price" min="0" value="{{ min_price }}" placeholder="0">
+                        </div>
+                    <div>
+                    <label for="max-price">До:</label>
+                    <input type="number" id="max-price" name="max_price" min="0" value="{{ max_price }}" placeholder="10000">
+                    </div>
+                </div>
+                <div id="price-slider"></div>
+                    </div>
+            </div>
+
+            <!-- Фильтр по цвету -->
+            <div class="filter-section accordion-item">
+              <div class="accordion-header">
+                <span class="h4 accordion-title">Цвет</span>
+                    <span class="accordion-arrow"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 1L7 7L1 1" stroke="#383230" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span> <!-- Стрелка вниз -->
+            </div>
+             <div class="accordion-content">
+                <div class="color-filters">
+                <div class="colors_block colorfiltr">
+                    {% for color in colors %}
+                          <label>
+                                <input type="checkbox" name="colors" value="{{ color.id }}" data-name="{{ color.name }}" >
+                                <div class="obv"><div class="color-circle" style="background-color: {{ color.code }};" title="{{ color.name }}"></div></div>{{ color.name }}
+                            </label>
+                    {% endfor %}
+                </div>
+                </div>
+             </div>
+            </div>
+
+            <!-- Фильтр по размеру -->
+            <div class="filter-section accordion-item">
+            <div class="accordion-header">
+                <span class="h4 accordion-title">Размер</span>
+             <span class="accordion-arrow"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 1L7 7L1 1" stroke="#383230" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span> <!-- Стрелка вниз -->
+            </div>
+             <div class="accordion-content">
+                <div class="size-filters">
+                    {% for size in sizes %}
+                        <label>
+                            <input type="checkbox" name="sizes" value="{{ size.id }}">
+                            {{ size.name }} ({{ size.code }})
+                        </label>
+                    {% endfor %}
+                </div>
+             </div>
+            </div>
+
+            <!-- Кнопки -->
+            <button type="button" id="apply-filters">Применить</button>
+
+        </form>
+    </div>
+</div>
+
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filterOpen = document.querySelector('.filter_opent'); // Кнопка открытия
+    const filterSidebar = document.querySelector('.filter_sidebar'); // Боковое меню
+    const filterOverlay = document.querySelector('.filter_overlay'); // Затемненный фон
+    const applyfilters = document.querySelector('.filter_close'); // Крестик для закрытия
+    const applyfilters2 = document.querySelector('#apply-filters'); // Крестик для закрытия
+    const noskrol = document.querySelector('body'); // Крестик для закрытия
+
+    // Открытие фильтра
+    filterOpen.addEventListener('click', function () {
+        filterSidebar.classList.add('open');
+        filterOverlay.classList.add('open');
+        noskrol.classList.add('no-skroll');
+    });
+
+    // Закрытие фильтра по клику на крестик
+    applyfilters.addEventListener('click', function () {
+        filterSidebar.classList.remove('open');
+        filterOverlay.classList.remove('open');
+         noskrol.classList.remove('no-skroll');
+    });
+
+    // Закрытие фильтра по клику на применить
+    applyfilters2.addEventListener('click', function () {
+        filterSidebar.classList.remove('open');
+        filterOverlay.classList.remove('open');
+         noskrol.classList.remove('no-skroll');
+    });
+
+    // Закрытие фильтра по клику на затемненный фон
+    filterOverlay.addEventListener('click', function () {
+        filterSidebar.classList.remove('open');
+        filterOverlay.classList.remove('open');
+         noskrol.classList.remove('no-skroll');
+    });
+});
+
+
 $(document).ready(function () {
     // Инициализация слайдера для цены
     $("#price-slider").slider({
@@ -193,5 +313,7 @@ $(document).ready(function () {
 });
 </script>
 
+
+    {% include 'shop/chunk/ball_auth.html' %}
 
 {% endblock %}

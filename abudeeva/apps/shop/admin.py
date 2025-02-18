@@ -9,8 +9,8 @@ from .specifications.general import  Color,Size
 from .specifications.blazers import BlazersAttributes
 from django.contrib.contenttypes.admin import GenericStackedInline
 
-#admin.site.register(Size)
-#admin.site.register(Color)
+admin.site.register(Size)
+admin.site.register(Color)
 
 
 

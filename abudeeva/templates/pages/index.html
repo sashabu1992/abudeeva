@@ -6,5 +6,19 @@
     <div class="container">
     <h2>Главная страница</h2>
     <p>Это главная страница сайта.</p>
+
+
+    <div class="categoryu_menu">
+    <div class="menucategory">
+
+
+     {% for item in category %}
+                <span class="">
+                    <a href="{% url 'category_tovar' item.slug %}">{{ item.h1 }}</a>
+                </span>
+            {% endfor %}
+
+    </div>
+</div>
     </div>
 {% endblock %}

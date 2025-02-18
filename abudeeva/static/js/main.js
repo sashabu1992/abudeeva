@@ -264,22 +264,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // работа с опцией цвета
    document.addEventListener('DOMContentLoaded', function() {
+
         // Находим все радио-кнопки и блок с текстом
         const radioButtons = document.querySelectorAll('input[name="color"]');
+        const radioButtons2 = document.querySelectorAll('input[name="colors"]');
         const colorNameSpan = document.querySelector('.colors_name');
 
         // Функция для обновления текста и добавления класса active
         function updateSelectedColor() {
+
             // Убираем класс active у всех элементов
             document.querySelectorAll('.obv').forEach(obv => {
                 obv.classList.remove('active');
+
             });
 
             // Находим выбранную радио-кнопку
             const selectedRadio = document.querySelector('input[name="color"]:checked');
 
+
             // Если есть выбранная радио-кнопка
             if (selectedRadio) {
+
                 // Добавляем класс active к выбранному элементу
                 selectedRadio.closest('label').querySelector('.obv').classList.add('active');
 
@@ -287,14 +293,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 const selectedColorName = selectedRadio.getAttribute('data-name');
                 colorNameSpan.textContent = selectedColorName;
             }
+
         }
+
+
 
         // Вызываем функцию при загрузке страницы
         updateSelectedColor();
 
+        // Функция для обновления текста и добавления/удаления класса active
+function updateSelectedColor2() {
+    // Находим все checkbox'ы
+    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="colors"]');
+
+    // Перебираем все checkbox'ы
+    checkboxes.forEach(checkbox => {
+        // Находим ближайший label и элемент с классом .obv
+        const label = checkbox.closest('label');
+        const obvElement = label.querySelector('.obv');
+
+        // Если checkbox отмечен, добавляем класс active, иначе удаляем
+        if (checkbox.checked) {
+            obvElement.classList.add('active');
+        } else {
+            obvElement.classList.remove('active');
+        }
+    });
+}
+
+// Добавляем обработчик события change для всех checkbox'ов
+document.querySelectorAll('input[type="checkbox"][name="colors"]').forEach(checkbox => {
+    checkbox.addEventListener('change', updateSelectedColor2);
+});
+
+// Инициализация состояния при загрузке страницы
+updateSelectedColor2();
+
+
         // Добавляем обработчик события для каждой радио-кнопки
         radioButtons.forEach(radio => {
             radio.addEventListener('change', updateSelectedColor);
+        });
+        // Добавляем обработчик события для каждой радио-кнопки
+        radioButtons2.forEach(radio => {
+            radio.addEventListener('change', updateSelectedColor2);
         });
     });
 

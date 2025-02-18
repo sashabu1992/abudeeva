@@ -73,7 +73,7 @@ def user_login(request):
     else:
         form = AuthenticationForm(request)
 
-    return render(request, 'account/login.html', {'form': form, 'next': request.GET.get('next', '')})
+    return render(request, 'account/login.html', {'form': form, 'next': request.GET.get('next', 'lk')})
 
 
 def user_logout(request):

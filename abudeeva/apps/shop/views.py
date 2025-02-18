@@ -21,19 +21,24 @@ def shop_index(request):
     return render(request, 'shop/shop.html')
 
 
+from django.db.models import Q
+
 def category_tovar(request, slug_category):
     # Получаем категорию по slug
     category = get_object_or_404(CategoryShop, slug=slug_category)
 
-    # Получаем все товары из этой категории
-    tovars = TovarShop.objects.filter(category=category, is_draft=True)
+    # Получаем все вложенные категории, если текущая категория не является листовой
+    if not category.is_leaf_node():
+        subcategories = category.get_descendants(include_self=True)
+        tovars = TovarShop.objects.filter(category__in=subcategories, is_draft=True)
+    else:
+        tovars = TovarShop.objects.filter(category=category, is_draft=True)
 
     # Получаем минимальную и максимальную цену для товаров в категории
     min_price = tovars.aggregate(min_price=Min('price'))['min_price'] or 0
     max_price = tovars.aggregate(max_price=Max('price'))['max_price'] or 10000
 
     # Получаем уникальные цвета и размеры для товаров в категории
-    # Используем GenericRelation для фильтрации
     colors = Color.objects.filter(
         dressesattributes__tovar__in=tovars
     ).distinct()
@@ -44,7 +49,6 @@ def category_tovar(request, slug_category):
 
     # Формируем хлебные крошки
     breadcrumbs = list(category.get_ancestors(include_self=False))  # Исключаем текущую категорию
-
 
     # Передаем данные в шаблон
     context = {
@@ -57,7 +61,6 @@ def category_tovar(request, slug_category):
         'max_price': max_price,
     }
     return render(request, 'shop/tovar_list.html', context)
-
 
 
 def tovar_detail(request, slug_category, slug_tovar):
@@ -137,6 +140,7 @@ def filter_tovars(request):
             price__gte=min_price,
             price__lte=max_price,
         )
+
 
         # Фильтруем по цветам, если они выбраны
         if selected_colors:

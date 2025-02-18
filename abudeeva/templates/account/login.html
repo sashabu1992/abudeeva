@@ -57,7 +57,7 @@
                     </div>
                 {% endif %}
 
-                <input type="hidden" name="next" value="{{ next }}">
+                <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}/lk/{% endif %}">
                 <button type="submit" class="btn btn-primary">Войти</button>
             </form>
 

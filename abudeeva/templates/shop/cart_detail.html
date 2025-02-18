@@ -25,6 +25,11 @@
 
     <h1 id="h1_Cart">Корзина: <span id="cart-count-h1" class="cart-count-text"> {{ cart.get_total_quantity|pluralize_products }}</span></h1>
 
+
+
+
+
+
 <div class="row rowscart">
     <div class="cart_list">
            <div class="cart-items">
@@ -84,13 +89,15 @@
     </label>
 
     <label class="delivery-option">
-        <input type="radio" name="delivery_method" value="pickup">
+        <input type="radio" name="delivery_method" value="pickup" id="pickup">
         <span class="checkmark"></span>
         <div class="delivery-text">
             <span class="delivery-title">Пункт самовывоза</span>
             <span class="delivery-description">СДЭК, Boxberry, Почта России</span>
         </div>
     </label>
+
+
 </div>
 </div>
 
@@ -211,5 +218,8 @@
 
 </div>
 </section>
+
+
+
 
 {% endblock %}

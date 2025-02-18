@@ -33,7 +33,7 @@ if DEBUG_HOST == 'DEV':
 else:
     ALLOWED_HOSTS = ['abudeeva.ru']
     WSGI_APPLICATION = 'core.wsgi.application'
-    DEBUG = False
+    DEBUG = True
 
 
 
@@ -173,9 +173,13 @@ CART_SESSION_ID = 'cart'  # Уникальный ключ для хранени�
 
 LOGIN_URL = 'login'  # Указывает на имя URL-шаблона для страницы входа
 
+DEFAULT_FROM_EMAIL = 'robot@abudeeva.ru'  # Укажите ваш реальный адрес
+SERVER_EMAIL = 'robot@abudeeva.ru'  # Укажите ваш реальный адрес
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yourserver.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your@email.com'
-EMAIL_HOST_PASSWORD = 'yourpassword'
+EMAIL_HOST = 'smtp.beget.com'
+EMAIL_PORT = 465  # Используйте 587, если хотите использовать TLS
+EMAIL_USE_SSL = True  # Используйте True для порта 465
+EMAIL_USE_TLS = False  # Используйте True для порта 587
+EMAIL_HOST_USER = 'robot@abudeeva.ru'
+EMAIL_HOST_PASSWORD = 'I*a6qsK&9LGp'

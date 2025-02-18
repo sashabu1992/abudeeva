@@ -76,8 +76,15 @@ text-transform: uppercase;
     display:flex;
     gap: 20px;
 }
+.colors_block.colorfiltr{
+    display: grid;
+}
 .colors_block input{
     display:none
+}
+.size-filters{
+    display: grid;
+    gap: 10px;
 }
    /* Стили для контейнера с цветами */
         .colors {
@@ -104,6 +111,11 @@ text-transform: uppercase;
             border: 1px solid #c7c7c7;
             cursor: pointer;
             transition: transform 0.2s ease;
+        }
+        .colorfiltr label{
+            display: flex;
+            gap:10px;
+            align-items: center;
         }
 .form_razmer{
     margin-bottom: 20px;
