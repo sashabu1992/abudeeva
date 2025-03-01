@@ -1,4 +1,5 @@
  {% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,7 +10,14 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'fonts/cera/stylesheet.css' %}">
        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-{% block style_dob  %}{% endblock %}
+<!-- Подключение стилей Swiper -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Подключение скриптов Swiper -->
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <meta name="csrf-token" content="{{ csrf_token }}">
 </head>
 <body>
@@ -20,7 +28,7 @@
                     <div class="itemnav">
                         <button><img src="{% static 'images/icon/bar.svg' %}" alt="меню">Меню</button>
                     </div>
-                    <div class="catalog_nav">
+                    <div class="catalog_nav_knop">
                         <a href="">Каталог
                         <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M13 1L7 7L1 1" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
@@ -272,6 +280,98 @@
 });
     </script>
 
+{% load custom_filters %}
+<div id="catalog_nav">
+    <div class="container">
+        <div class="catalog_nav">
+            <div class="left">
+               {% render_categories %}
+            </div>
+            <div class="right">
+                <div class="subcategory_block"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const catalogNav = document.getElementById('catalog_nav');
+    const catalogNavKnop = document.querySelector('.catalog_nav_knop');
+    const categoryItems = document.querySelectorAll('.category-item > a');
+    const subcategoryBlock = document.querySelector('.subcategory_block');
+
+    let isHovered = false; // Флаг для отслеживания наведения на блок
+
+    // Показываем #catalog_nav при наведении на .catalog_nav_knop
+    catalogNavKnop.addEventListener('mouseenter', function () {
+        catalogNav.style.display = 'block'; // Показываем блок
+    });
+
+    // Скрываем #catalog_nav при уходе курсора с .catalog_nav_knop или #catalog_nav
+    catalogNavKnop.addEventListener('mouseleave', function (event) {
+        // Проверяем, перешел ли курсор на #catalog_nav
+        if (!catalogNav.contains(event.relatedTarget)) {
+            catalogNav.style.display = 'none'; // Скрываем блок
+        }
+    });
+
+    catalogNav.addEventListener('mouseleave', function (event) {
+        // Проверяем, перешел ли курсор на .catalog_nav_knop
+        if (!catalogNavKnop.contains(event.relatedTarget)) {
+            catalogNav.style.display = 'none'; // Скрываем блок
+        }
+    });
+
+    // Функция для создания подкатегорий
+    function buildSubcategories(data) {
+        subcategoryBlock.innerHTML = ''; // Очищаем блок
+        const subnav = JSON.parse(data.replace(/'/g, '"')); // Парсим данные
+        const ul = document.createElement('ul');
+
+        for (const [key, value] of Object.entries(subnav)) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = value;
+            a.textContent = key;
+            li.appendChild(a);
+            ul.appendChild(li);
+        }
+
+        subcategoryBlock.appendChild(ul);
+        subcategoryBlock.classList.add('active'); // Показываем блок
+    }
+
+    // Обработчик наведения на категорию
+    categoryItems.forEach(item => {
+        item.addEventListener('mouseenter', function () {
+            // Убираем класс active у всех категорий
+            categoryItems.forEach(cat => {
+                cat.parentElement.classList.remove('active');
+            });
+
+            // Добавляем класс active текущей категории
+            item.parentElement.classList.add('active');
+
+            const subnavData = item.getAttribute('data-subnav');
+            buildSubcategories(subnavData); // Строим подкатегории
+            isHovered = true; // Устанавливаем флаг
+        });
+    });
+
+    // Обработчик ухода курсора с блока #catalog_nav
+    catalogNav.addEventListener('mouseleave', function () {
+        if (isHovered) {
+            subcategoryBlock.classList.remove('active'); // Скрываем блок
+            categoryItems.forEach(cat => {
+                cat.parentElement.classList.remove('active'); // Убираем класс active у всех категорий
+            });
+            isHovered = false; // Сбрасываем флаг
+        }
+    });
+});
+</script>
 
 </body>
 </html>

@@ -1,6 +1,38 @@
 from django import template
+from django.utils.safestring import mark_safe
+from django.urls import reverse
+from ..models import CategoryShop  # Импортируем вашу модель
 
 register = template.Library()
+
+@register.simple_tag
+def render_categories():
+    """
+    Формирует HTML-структуру для категорий без вложенных ul.
+    """
+    def build_tree(category):
+        # Формируем данные для текущей категории
+        subcategories = category.get_children()
+        subnav = {}
+
+        # Собираем подкатегории для data-subnav
+        for subcategory in subcategories:
+            subnav[subcategory.h1] = reverse('category_tovar', kwargs={'slug_category': subcategory.slug})
+
+        # Формируем HTML для текущей категории
+        html = f'<li class="category-item"><a data-subnav="{subnav}" href="{reverse("category_tovar", kwargs={"slug_category": category.slug})}">{category.h1}</a></li>'
+        return html
+
+    # Получаем корневые категории (те, у которых нет родителя)
+    categories = CategoryShop.objects.filter(parent=None)
+
+    # Начинаем формирование HTML с корневых категорий
+    html = '<ul class="category-list">'
+    for category in categories:
+        html += build_tree(category)
+    html += '</ul>'
+
+    return mark_safe(html)
 
 
 @register.filter

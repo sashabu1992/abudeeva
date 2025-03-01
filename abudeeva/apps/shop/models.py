@@ -108,7 +108,9 @@ class TovarShop(models.Model):
     article = models.CharField(max_length=255, verbose_name="Артикул", blank=True)
     # Новые поля для цены и старой цены
     price = models.DecimalField(max_digits=10,decimal_places=2,verbose_name="Цена",default=0.00, blank=True)
-    old_price = models.DecimalField(max_digits=10,decimal_places=2,verbose_name="Старая цена",blank=True, null=True)
+    old_price = models.DecimalField(max_digits=10,decimal_places=2,verbose_name="Старая цена", blank=True, null=True)
+    is_popular = models.BooleanField(default=False, verbose_name="Популярный")
+    is_new = models.BooleanField(default=False, verbose_name="Новый")
 
     created = models.DateField(auto_now_add=True, blank=True, verbose_name="Дата создания")
     modified = models.DateField(auto_now=True, verbose_name="Дата изменения")

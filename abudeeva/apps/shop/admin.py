@@ -140,13 +140,13 @@ class BlazersAttributesInline(GenericStackedInline):
 class TovarShopAdmin(admin.ModelAdmin):
     form = TovarShopForm
     search_fields = ('h1',)
-    list_display = ('h1', 'price', 'old_price', 'category', 'image_preview', 'created', 'is_draft',)
+    list_display = ('h1', 'price', 'old_price', 'category', 'image_preview', 'created', 'is_draft', 'is_popular','is_new',)
     fieldsets = (
         ('SEO', {
             'fields': ('title', 'description', 'slug')
         }),
         ('Содержимое', {
-            'fields': ('h1', 'zast', 'article', 'price', 'old_price', 'category')
+            'fields': ('h1', 'zast', 'article', 'price', 'old_price', 'category', 'is_popular', 'is_new',)
         }),
         ('Настройки', {
             'fields': ('created', 'modified', 'is_draft')

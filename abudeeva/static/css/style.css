@@ -212,6 +212,13 @@ text-transform: uppercase;
 .nav1{
     align-items: center;
     gap: 40px;
+    height:100%;
+}
+.nav1 .catalog_nav{
+     height:100%;
+}
+.nav1 .catalog_nav a{
+     height:100%;
 }
 .breadcrumbs{
     margin:30px 0;
@@ -2033,3 +2040,388 @@ text-transform: uppercase;
     width:32px;
     height:32px
 }
+#catalog_nav {
+    display:none;
+    position: fixed;
+    top: 94px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffffe3;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 900;
+}
+.catalog_nav_knop{
+    height:100%;
+        transition: opacity 0.3s ease;
+    transform: rotate(0deg);
+}
+
+.catalog_nav_knop:hover svg{
+    transform: rotate(180deg);
+        transition: opacity 0.3s ease;
+}
+.catalog_nav_knop a{
+        display: flex;
+    gap: 10px;
+    align-items: center;
+    color: rgb(56, 50, 48);
+    font-family: Cera Pro;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    text-align: left;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    box-shadow: none;
+    height:100%
+}
+.catalog_nav_knop:hover #catalog_nav{
+    display: block;
+}
+.subcategory_block {
+    display: none;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.category-item.active > a {
+    color: rgb(0 0 0); /* Изменяем цвет текста */
+}
+.subcategory_block.active {
+    display: block;
+    opacity: 1;
+}
+
+.catalog_nav {
+    display: flex;
+    gap: 40px;
+    padding: 40px 0;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.category-item > a {
+    color: rgb(56, 50, 48);
+    font-family: Cera Pro;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    text-align: left;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    box-shadow: none;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+
+.catalog_nav .left {
+    width: 300px;
+}
+
+.catalog_nav .right {
+    width: calc(100% - 300px - 40px);
+}
+
+.subcategory_block {
+    display: none;
+    padding: 20px;
+}
+
+.subcategory_block.active {
+    display: block;
+        position: relative;
+}
+.category-item.active > a {
+    position: relative; /* Делаем ссылку относительным контейнером */
+    padding-right: 20px; /* Добавляем отступ для стрелочки */
+        width: fit-content;
+}
+
+.category-item.active > a::after {
+    content: '';
+    display: inline-block;
+}
+/* Показываем стрелочку только если data-subnav не пустой */
+.category-item.active > a[data-subnav]:not([data-subnav="{}"])::after {
+
+        content: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-right' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8'/%3e%3c/svg%3e");
+    position: absolute;
+    right: 0; /* Позиционируем сразу после текста */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px; /* Ширина иконки */
+    height: 16px; /* Высота иконки */
+    color: #666; /* Цвет иконки */
+}
+.subcategory_block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.subcategory_block ul li {
+    margin-bottom: 20px;
+}
+
+.subcategory_block ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.subcategory_block ul li a:hover {
+    color: #000;
+}
+.pd40{
+    padding:40px 0
+}
+.flex_zag{
+    align-items: center;
+    gap:20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.flex_zag h2{
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 12px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+}
+.flex_zag a{
+color: rgb(150, 150, 150);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+text-decoration-line: underline;
+}
+#popular_tovar .itemstovar{
+    width:100%
+}
+
+.content_product{
+    gap:30px;
+    justify-content: space-between;
+    margin:30px auto;
+}
+.content_product .left{
+    width:calc(50% - 30px)
+}
+.content_product .right{
+    width:calc(50% - 30px)
+}
+.opis_tovar{
+    padding:40px 60px;
+    padding-right: 150px;
+}
+.opis_tovar h1{
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 700;
+line-height: 140%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+}
+.rows12{
+    display: flex;
+    gap:40px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.price_item{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+}
+.ball{
+    color: rgb(153, 153, 153);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+       display: flex;
+    gap:8px;
+    align-items: center;
+}
+ /* Стили для контейнера с иконкой */
+        .tooltip-container {
+                position: relative;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+        }
+.colors_row{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    display: block;
+    margin-bottom: 18px;
+}
+.colors_block{
+    display:flex;
+    gap: 20px;
+}
+.colors_block.colorfiltr{
+    display: grid;
+}
+.colors_block input{
+    display:none
+}
+.size-filters{
+    display: grid;
+    gap: 10px;
+}
+   /* Стили для контейнера с цветами */
+        .colors {
+           display:block;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        /* Стили для кружочков */
+.obv{
+      border: 1px solid #fff;
+        border-radius: 100%;
+    padding: 1px;
+}
+.obv.active{
+      border: 1px solid rgb(0, 0, 0);
+        border-radius: 100%;
+    padding: 1px;
+}
+        .color-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%; /* Делаем кружочки круглыми */
+            border: 1px solid #c7c7c7;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .colorfiltr label{
+            display: flex;
+            gap:10px;
+            align-items: center;
+        }
+.form_razmer{
+    margin-bottom: 20px;
+}
+.form_razmer select{
+    box-sizing: border-box;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 4px;
+height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 8px;
+    width: 100%;
+}
+.rows_tov_knop{
+    display: flex;
+    gap:16px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.rows_tov_knop button{
+    height:48px
+}
+.rows_tov_knop .btn-add-cart{
+    width:calc(100% - 66px);
+    max-width: 100%;
+}
+.rows_tov_knop .btn-favor{
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.plusrt{
+    display: block;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.plusrt .item{
+    display: flex;
+    gap:12px;
+    align-items: center;
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    margin-bottom:12px
+}
+.oldprice{
+color: rgb(218 71 71);
+    text-decoration: line-through;
+        margin-left: 10px;
+}
+.content_product_upsale{
+    margin-top:100px
+}
+.flextovar2 .itemstovar{
+    margin:0;
+}
+.swiper-container-dop{
+    margin-bottom:40px;
+        overflow: hidden;
+}
+.swiper-container-dop .itemstovar{
+    width:100%;
+        margin: 0;
+}
+.swiper-container-dop {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-container-dop .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -3,22 +3,40 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
-    <div class="container">
-    <h2>Главная страница</h2>
-    <p>Это главная страница сайта.</p>
 
 
-    <div class="categoryu_menu">
-    <div class="menucategory">
+    <section id="popular_tovar" class="pd40">
+        <div class="container">
+            <div class="flex flex_zag">
+                <div><h2>Популярно</h2></div>
+                 <div><a href="">Смотреть все</a></div>
+            </div>
 
-
-     {% for item in category %}
-                <span class="">
-                    <a href="{% url 'category_tovar' item.slug %}">{{ item.h1 }}</a>
-                </span>
+            <div class="swiper-container-dop">
+    <div class="swiper-wrapper">
+        {% if tovars_popular %}
+            {% for tovar in tovars_popular %}
+                <div class="swiper-slide">
+                    {% include 'shop/chunk/tovar_card.html' %}
+                </div>
             {% endfor %}
+        {% endif %}
+    </div>
 
+            <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.swiper-container-dop', {
+            slidesPerView: 3, // Количество карточек в ряду
+            spaceBetween: 20, // Отступ между карточками
+            loop: true, // Бесконечный слайдер
+            autoplay: {
+                delay: 3000, // Автопрокрутка каждые 3 секунды
+                disableOnInteraction: false, // Продолжать автопрокрутку после взаимодействия
+            },
+
+        });
+    });
+</script>
     </div>
-</div>
-    </div>
+    </section>
 {% endblock %}
