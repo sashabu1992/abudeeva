@@ -1,0 +1,12 @@
+ {% load thumbnail %}
+ {% load static %}
+{% load custom_filters %}
+
+                        <div class="item itemstovar">
+                            <a href="{{ cat.get_absolute_url }}">
+                               <img src="{{ cat.zast|thumbnail_url:'tovar_cat' }}" alt="{{ cat.h1 }}"></a>
+
+                           <a class="nametov" href="{{ cat.get_absolute_url }}">{{ cat.h1 }}</a>
+
+                            <!-- Дополнительные поля товара -->
+                        </div>

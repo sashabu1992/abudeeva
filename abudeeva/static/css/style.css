@@ -1201,6 +1201,7 @@ border: 1px solid rgb(239, 239, 239);
     align-items: center;
     justify-content: center;
     gap: 15px;
+    text-align: center;
 }
 .rows-card-lk .item a img{
     height: 32px;
@@ -2424,4 +2425,751 @@ color: rgb(218 71 71);
     justify-content: center;
     align-items: center;
 }
+.swiper-container-new{
+    margin-bottom:40px;
+        overflow: hidden;
+}
+.swiper-container-new .itemstovar{
+    width:100%;
+        margin: 0;
+}
+.swiper-container-new {
+    width: 100%;
+    padding: 20px 0;
+}
 
+.swiper-container-new .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-container-popular{
+    margin-bottom:40px;
+        overflow: hidden;
+}
+.swiper-container-popular .itemstovar{
+    width:100%;
+        margin: 0;
+}
+.swiper-container-popular {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-container-popular .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#new_tovar .flex .item__zag{
+    width:33.333%
+}
+#new_tovar .flex .swiper-container-new{
+    width:66.666%
+}
+.item__zag h2{
+    /* Desktop/Header 1 */
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 36px;
+font-weight: 400;
+line-height: 57.6px;
+letter-spacing: 0px;
+text-align: left;
+}
+.item__zag p{
+    color: rgba(56, 50, 48, 0.7);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 25.6px;
+letter-spacing: 0%;
+text-align: left;
+    margin-bottom: 40px;
+}
+.btn1_1{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+    box-sizing: border-box;
+border: 1px solid rgb(0, 0, 0);
+border-radius: 4px;
+/* Component 32 */
+max-width: 217px;
+height: 40px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 10px;
+padding: 8px;
+}
+.itemstovar{
+    position:relative;
+}
+.new_met{
+    color: rgb(0, 0, 0);
+font-family: IBM Plex Mono;
+font-size: 11px;
+font-weight: 400;
+line-height: 12px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+    box-sizing: border-box;
+border: 1px solid rgb(0, 0, 0);
+border-radius: 10px;
+/* Frame 49644 (КАрточка товара) */
+position: absolute;
+    top:18px;
+    left:18px;
+width: 42px;
+height: 20px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 8;
+padding: 4px 8px 4px 8px;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.swiper-container-category{
+    margin-bottom:40px;
+        overflow: hidden;
+}
+.swiper-container-category .itemstovar{
+    width:100%;
+        margin: 0;
+}
+.swiper-container-category {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-container-category .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex_expert{
+    align-items: center;
+}
+.flex_expert .item{
+    width: 50%;
+}
+.cont_ex{
+    padding: 40px;
+}
+.cont_ex h2{
+color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 34px;
+font-weight: 400;
+line-height: 48px;
+letter-spacing: 1px;
+text-align: left;
+}
+.cont_ex p{
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 250;
+line-height: 130%;
+letter-spacing: 0px;
+text-align: left;
+    margin-bottom: 100px;
+}
+#podpis_obn{
+    background: url('../images/pof_bg.jpeg');
+    background-size: cover;
+    min-height:652px;
+        display: flex;
+    align-items: center;
+}
+#podpis_obn span.h2{
+    display: block;
+    color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 34px;
+font-weight: 400;
+line-height: 48px;
+letter-spacing: 1px;
+text-align: left;
+}
+form.podpiska2 {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+form.podpiska2 input {
+    box-shadow: none;
+    border: none;
+    box-sizing: border-box;
+border-bottom: 1px solid rgb(56, 50, 48);
+    padding: 8px;
+    height: 36px;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: Cera Pro;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0%;
+    text-align: left;
+    width: calc(100% - 144px - 20px);
+}
+form.podpiska2 button {
+   color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 15px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    box-sizing: border-box;
+border: 1px solid rgb(56, 50, 48);
+border-radius: 4px;
+/* КНОПКА ПОДТВЕРДИТЬ */
+position: relative;
+width: 144px;
+height: 36px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 8;
+padding: 8px;
+}
+#podpis_obn .left_item{
+    max-width:660px
+}
+#mar_cat .flex .item{
+    width:50%;
+    height:calc(100vh - 94px);}
+
+.cat_mar_ex{
+     position: relative;
+        height: 100%;
+        width: 100%
+    }
+.cat_mar_ex{
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    justify-content: center;
+}
+.cat_mar_ex span{
+    color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 36px;
+font-weight: 400;
+line-height: 57.6px;
+letter-spacing: 0px;
+text-align: left;
+}
+.cat_mar_ex a{
+    position:absolute;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    bottom:40px
+}
+.mar_cat_rel{
+    position: relative;
+}
+#mar_cat.mar_cat_rel a{
+     position: absolute;
+    color: #fff;
+    bottom: 100px;
+    border: 1px solid rgb(255, 255, 255);
+    height: 40px;
+    width: 217px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+#perv_ecr{
+    background: url('../images/perv.jpeg');
+    background-size: cover;
+    height:calc(100vh - 94px);
+        display: flex;
+    align-items: center;
+}
+.scrmob{
+    display:none
+}
+.righ_item .h1_1{
+color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 50px;
+font-weight: 400;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+    display:block;
+}
+.righ_item .h1_2{
+color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 160px;
+font-weight: 500;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+        display:block;
+}
+.righ_item .h1_3{
+color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 80px;
+font-weight: 500;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+        display:block;
+}
+.righ_item .h1_4{
+color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 50px;
+font-weight: 400;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+        display:block;
+}
+#perv_ecr .flex {
+    display: flex;
+    justify-content: end;
+    text-align: center;
+}
+#perv_ecr a{
+    color: #fff;
+    border: 1px solid rgb(255, 255, 255);
+    height: 40px;
+    width: 217px;
+    margin: 0 auto;
+    margin-top:100px
+}
+
+
+@media(max-width: 1024px){
+    #podpis_obn {
+   min-height: 452px;
+}
+    #podpis_obn span.h2 {
+    font-size: 24px;
+    line-height: 34px;
+}
+    #podpis_obn .left_item {
+    max-width: 460px;
+}
+    .righ_item .h1_1{
+font-size: 30px;
+}
+.righ_item .h1_2{
+font-size: 120px;
+}
+.righ_item .h1_3{
+font-size: 60px;
+}
+.righ_item .h1_4{
+font-size: 30px;
+}
+}
+
+@media(max-width:920px){
+    #perv_ecr {
+    background: url('../images/perv_mob.jpeg');
+            background-size: cover;
+        display: flex;
+        align-items: start;
+        position:relative;
+}
+    #perv_ecr .flex {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+    .catalog_nav_knop{
+        display: none;
+    }
+    #perv_ecr a{
+            position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+                bottom: 50px;
+    }
+    #nav1{
+        width: 90%;
+    }
+    .itemstovar .nametov{
+        color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 12px;
+font-weight: 400;
+line-height: 120%;
+letter-spacing: 0.4px;
+text-align: left;
+text-transform: uppercase;
+        height: 28px;
+    }
+    .prop .price{
+        color: rgb(226, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 120%;
+letter-spacing: 0%;
+text-align: left;
+    }
+    .prop .old_price{
+        font-size: 14px;
+font-weight: 400;
+line-height: 120%;
+    }
+    #mar_cat .flex{
+        flex-wrap: wrap;
+    }
+    #mar_cat .flex .item{
+            width: 100%;
+    height:500px;
+    }
+    header {
+    height: 64px;
+    z-index: 999;
+}
+    body {
+    padding-top: 64px;
+}
+    .header .logo img {
+    max-width: 94px;
+}
+
+    #new_tovar  .flex{
+        flex-wrap: wrap;
+    }
+    #new_tovar .flex .item__zag {
+    width: 100%;
+}
+    .item__zag h2 {
+    margin: 0;
+            line-height: 40px;
+}
+    #new_tovar .flex .swiper-container-new {
+    width: 100%;
+}
+    .item__zag p{
+        margin-bottom: 10px;
+    }
+    #podpis_obn {
+    background: url('../images/pof_bg_mob.jpeg');
+    background-size: cover;
+    height: calc(100vh - 64px);
+        max-height:721px
+    display: flex;
+    align-items:start;
+}
+    #podpis_obn span.h2{
+        color: rgb(56, 50, 48);
+font-family: Cera Pro;
+font-size: 17px;
+font-weight: 400;
+line-height: 120%;
+letter-spacing: 1px;
+text-align: center;
+    }
+    form.podpiska2 {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+    form.podpiska2 input{
+        width:100%
+    }
+    form.podpiska2 button{
+        width:100%;
+        max-width:217px;
+                margin: 0 auto;
+    }
+    .flex_expert {
+    align-items: center;
+        flex-wrap: wrap;
+}
+    .flex_expert .item {
+    width: 100%;
+}
+    .cont_ex h2 {
+    color: rgb(56, 50, 48);
+    font-family: Cera Pro;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 1px;
+    text-align: left;
+}
+    .cont_ex {
+    padding: 0;
+}
+    .cont_ex p{
+        margin-bottom: 20px;
+    }
+    .login_ball_block span.h3{
+        color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 400;
+line-height: 130%;
+letter-spacing: 0px;
+text-align: center;
+    }
+    .login_ball_block{
+        margin-top: 50px;
+    }
+    .rowsfooter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+    .part1 {
+    width: 100%;
+}
+    .part2 {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+    footer .container {
+    height: 100%;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.zf1{
+color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 24px;
+font-weight: 400;
+line-height: 120%;
+letter-spacing: 0%;
+text-align: center;
+    margin-bottom: 15px;
+}
+.zf2{
+    color: rgb(255, 255, 255);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 250;
+line-height: 120%;
+letter-spacing: 0.6px;
+text-align: center;
+}
+form.podpiska {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+form.podpiska input{
+    width: 100%
+}
+form.podpiska button{
+    width: 100%;
+    max-width: 144px;
+    margin: 0 auto;
+}
+.flexsoc {
+    gap: 60px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.socialk {
+    gap: 15px;
+    justify-content: center;
+}
+.part2{
+    display: none;
+}
+.content_product {
+    gap: 15px;
+    justify-content: space-between;
+    margin: 30px auto;
+    flex-wrap: wrap;
+}
+.content_product .left {
+    width: 100%;
+}
+.content_product .right {
+    width: 100%;
+}
+.dann_fl {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.itemnav button {
+    font-size: 12px;
+    font-weight: 500;}
+.btn-promo{
+    margin: 0 auto;
+}
+.slider {
+    color: #fff;
+    height: 500px!important;
+    overflow: hidden;
+}
+.opis_tovar {
+    padding: 40px 0;
+    padding-right: 0;
+}
+.content_product flex .slider__images {
+    height: 500px;
+    width: 100%;
+}
+.content_product_upsale {
+    margin-top: 40px;
+}
+.filter_sidebar{
+    width:90%
+}
+.price-range input{
+    width:80px
+}
+.flextovar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 30px;
+    justify-content: space-between;
+}
+.itemstovar {
+    width: calc((100% - 30px) / 2);
+}
+.menucategory {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+.breadcrumbs span {
+    font-size: 8px;
+}
+.breadcrumbs a {
+    font-size: 8px;
+}
+.rowscart {
+    display: flex
+;
+    justify-content: space-between;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+.cart_list {
+    width: 100%;
+}
+.sidebar-lk {
+    width: 100%;
+}
+.rows-order {
+    margin-top: 40px;
+    display: flex;
+    gap: 60px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.order-info {
+    width: 100%;
+}
+.sidebar-lk .item a{
+    margin-bottom:2px
+}
+.sidebar-lk .item a{
+     width: 100%;
+}
+.slider__images {
+    height: 500px!important;
+}
+.slider__image img{
+    height:auto!important;
+}
+ .slider__thumbs {
+        display: none!important; /* Скрываем слайдер с превью */
+    }
+
+    .slider__col {
+        margin-right: 0!important; /* Убираем отступ, если он больше не нужен */
+    }
+       .slider__images .swiper-container {
+        overflow: hidden!important; /* Отключаем прокрутку */
+    }
+       .tooltip-container{
+           position: relative;
+       }
+.tooltip-container .tooltip-text {
+   visibility: hidden;
+        width: 160px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px;
+        position: absolute;
+        z-index: 1;
+        bottom: -10px;
+        left: -170px;
+        height: fit-content;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        position: absolute;
+}
+.tooltip-container .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+    transform: rotate(180deg);
+}
+    .opis_tovar {
+        padding: 40px 0;
+        padding-right: 0;
+        margin-top: 0;
+        padding-top: 0;
+    }
+       rows12 .item{
+           width:50%
+       }
+.rows-card-lk .item {
+    box-sizing: border-box;
+    border: 1px solid rgb(239, 239, 239);
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+}
+
+}

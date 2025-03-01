@@ -2,6 +2,7 @@
 {% load custom_filters %}
 
                         <div class="item itemstovar">
+                      {% if tovar.is_new %}  <span class="new_met">NEW</span> {% endif %}
                             <a href="{{ tovar.get_absolute_url }}"> <img src="{{ tovar.zast|thumbnail_url:'tovar_zast' }}" alt=""></a>
                            <a class="nametov" href="{{ tovar.get_absolute_url }}">{{ tovar.h1 }}</a>
                         <div class="flex prop">

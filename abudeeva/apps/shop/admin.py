@@ -24,7 +24,7 @@ class CategoryShopAdmin(DjangoMpttAdmin):
             'fields': ('title', 'description', 'slug')
         }),
         ('Содержимое', {
-            'fields': ('h1',)
+            'fields': ('h1','zast')
         }),
         ('Настройки', {
             'fields': ('parent', 'attribute_type', 'created', 'modified', 'is_draft')

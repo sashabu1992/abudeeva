@@ -22,6 +22,11 @@ def increment_slug_category(slug, obj):
         counter += 1
     return slug if original_slug == slug else slug + '-1'
 
+def get_file_image_cat_zast(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join('images/category', str(instance.id), 'zast', filename)
+
 class CategoryShop(MPTTModel):
     slug = models.SlugField(max_length=255, blank=True, unique=True, verbose_name="URl")
     """СЕО настройки"""
@@ -29,6 +34,7 @@ class CategoryShop(MPTTModel):
     description = models.CharField(max_length=350, verbose_name="Описание Description", blank=True)
     """Основные данные """
     h1 = models.CharField(max_length=255, verbose_name="Заголовок H1")
+    zast = models.ImageField(upload_to=get_file_image_cat_zast, verbose_name="Фото", blank=True, default='defaults/default.png')
     created = models.DateField(auto_now_add=True, blank=True, verbose_name="Дата создания")
     modified = models.DateField(auto_now=True, verbose_name="Дата изменения")
     is_draft = models.BooleanField(default=True, verbose_name="Опубликован")

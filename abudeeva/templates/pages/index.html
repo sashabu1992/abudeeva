@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
+ {% load static %}
 
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
 
+            <section id="perv_ecr" class="pd40">
+    <div class="container">
+        <div class="flex">
+            <div class="righ_item">
+            <span class="h1_1">дарим тебе</span>
+                <span class="h1_2">1000 </span>
+                 <span class="h1_3">бонусов  </span>
+                 <span class="h1_4"> на первую покупку  </span>
+<a href="" class="btn1_1">За покупками <svg width="14.501953" height="6.661133" viewBox="0 0 14.502 6.66113" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs></defs>
+	<path id="Vector 1" d="M12.79 2.83L10.81 0.85C10.62 0.65 10.62 0.34 10.81 0.14C11.01 -0.05 11.32 -0.05 11.52 0.14L14.35 2.97C14.55 3.17 14.55 3.48 14.35 3.68L11.52 6.51C11.32 6.71 11.01 6.71 10.81 6.51C10.62 6.31 10.62 6 10.81 5.8L12.79 3.83L0 3.83L0 2.83L12.79 2.83Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"></path>
+</svg>
+
+</a>
+                </div>
+        </div>
+    </div>
+    </section>
 
     <section id="popular_tovar" class="pd40">
         <div class="container">
@@ -12,7 +31,7 @@
                  <div><a href="">Смотреть все</a></div>
             </div>
 
-            <div class="swiper-container-dop">
+            <div class="swiper-container-popular">
     <div class="swiper-wrapper">
         {% if tovars_popular %}
             {% for tovar in tovars_popular %}
@@ -23,10 +42,79 @@
         {% endif %}
     </div>
 
+           <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.swiper-container-popular', {
+              slidesPerView: 2, // Показывать одну карточку
+                    spaceBetween: 10, // Уменьшить отступ между карточками
+                    slideToClickedSlide: true, // Переход к карточке по клику
+            loop: true, // Бесконечный слайдер
+            autoplay: {
+                delay: 3000, // Автопрокрутка каждые 3 секунды
+                disableOnInteraction: false, // Продолжать автопрокрутку после взаимодействия
+            },
+            breakpoints: {
+                // Когда ширина экрана меньше 920px
+                920: {
+                     slidesPerView: 3, // Количество карточек в ряду по умолчанию
+            spaceBetween: 20, // Отступ между карточками
+            loop: true, // Бесконечный слайдер
+
+                }
+            }
+        });
+    });
+</script>
+    </div>
+        </div>
+    </section>
+
+        <section id="mar_cat" class="pd40 mar_cat_rel">
+        <div class="flex">
+            <div class="item">
+                    <div class="cat_mar_ex" style="background: url('{% static 'images/cat3_mar.jpeg' %}');background-size:cover"></div>
+
+            </div>
+         <div class="item">
+                    <div class="cat_mar_ex" style="background: url('{% static 'images/cat4_mar.jpeg' %}');background-size:cover"></div>
+            </div>
+        </div>
+        <a href="" class="btn1_1">К покупкам <svg width="14.501953" height="6.661133" viewBox="0 0 14.502 6.66113" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs/>
+	<path id="Vector 1" d="M12.79 2.83L10.81 0.85C10.62 0.65 10.62 0.34 10.81 0.14C11.01 -0.05 11.32 -0.05 11.52 0.14L14.35 2.97C14.55 3.17 14.55 3.48 14.35 3.68L11.52 6.51C11.32 6.71 11.01 6.71 10.81 6.51C10.62 6.31 10.62 6 10.81 5.8L12.79 3.83L0 3.83L0 2.83L12.79 2.83Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>
+
+</a>
+    </section>
+
+        <section id="new_tovar" class="pd40">
+        <div class="container">
+        <div class="flex">
+            <div class="item__zag">
+                <h2>Новинки</h2>
+                <p>Для тех, кто увлечен своим стилем</p>
+                <a href="" class="btn1_1">Смотреть все <svg width="14.501953" height="6.660645" viewBox="0 0 14.502 6.66064" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs/>
+	<path id="Vector 1" d="M12.79 2.83L10.81 0.85C10.62 0.65 10.62 0.34 10.81 0.14C11.01 -0.05 11.32 -0.05 11.52 0.14L14.35 2.97C14.55 3.17 14.55 3.48 14.35 3.68L11.52 6.51C11.32 6.71 11.01 6.71 10.81 6.51C10.62 6.31 10.62 6 10.81 5.8L12.79 3.83L0 3.83L0 2.83L12.79 2.83Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>
+</a>
+
+            </div>
+            <div class="swiper-container-new">
+    <div class="swiper-wrapper">
+        {% if tovars_new %}
+            {% for tovar in tovars_new %}
+                <div class="swiper-slide">
+                    {% include 'shop/chunk/tovar_card.html' %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
             <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const swiper = new Swiper('.swiper-container-dop', {
-            slidesPerView: 3, // Количество карточек в ряду
+        const swiper = new Swiper('.swiper-container-new', {
+            slidesPerView: 2, // Количество карточек в ряду
             spaceBetween: 20, // Отступ между карточками
             loop: true, // Бесконечный слайдер
             autoplay: {
@@ -38,5 +126,122 @@
     });
 </script>
     </div>
+                </div>
+        </div>
     </section>
+
+    <section id="mar_cat" class="pd40">
+        <div class="flex">
+            <div class="item">
+                    <div class="cat_mar_ex" style="background: url('{% static 'images/cat1_mar.jpeg' %}');background-size:cover">
+                    <span>Аксессуары</span>
+                   <a href="" class="btn1_1">Посмотреть <svg width="14.501953" height="6.661133" viewBox="0 0 14.502 6.66113" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs/>
+	<path id="Vector 1" d="M12.79 2.83L10.81 0.85C10.62 0.65 10.62 0.34 10.81 0.14C11.01 -0.05 11.32 -0.05 11.52 0.14L14.35 2.97C14.55 3.17 14.55 3.48 14.35 3.68L11.52 6.51C11.32 6.71 11.01 6.71 10.81 6.51C10.62 6.31 10.62 6 10.81 5.8L12.79 3.83L0 3.83L0 2.83L12.79 2.83Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>
+</a>
+                        </div>
+            </div>
+         <div class="item">
+                    <div class="cat_mar_ex" style="background: url('{% static 'images/cat2_mar.jpeg' %}');background-size:cover">
+                    <span>Premium Collection</span>
+                   <a href="" class="btn1_1">Посмотреть <svg width="14.501953" height="6.661133" viewBox="0 0 14.502 6.66113" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs/>
+	<path id="Vector 1" d="M12.79 2.83L10.81 0.85C10.62 0.65 10.62 0.34 10.81 0.14C11.01 -0.05 11.32 -0.05 11.52 0.14L14.35 2.97C14.55 3.17 14.55 3.48 14.35 3.68L11.52 6.51C11.32 6.71 11.01 6.71 10.81 6.51C10.62 6.31 10.62 6 10.81 5.8L12.79 3.83L0 3.83L0 2.83L12.79 2.83Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>
+
+</a>
+                        </div>
+            </div>
+        </div>
+    </section>
+
+
+
+        <section id="category_tovar" class="pd40">
+        <div class="container">
+            <div class="flex flex_zag">
+                <div><h2>Посмотрите еще</h2></div>
+            </div>
+
+            <div class="swiper-container-category">
+    <div class="swiper-wrapper">
+        {% if tovars_category %}
+            {% for cat in tovars_category %}
+                <div class="swiper-slide">
+                    {% include 'shop/chunk/cat_card.html' %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+            <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.swiper-container-category', {
+              slidesPerView: 2, // Показывать одну карточку
+                    spaceBetween: 10, // Уменьшить отступ между карточками
+                    slideToClickedSlide: true, // Переход к карточке по клику
+            loop: true, // Бесконечный слайдер
+            autoplay: {
+                delay: 3000, // Автопрокрутка каждые 3 секунды
+                disableOnInteraction: false, // Продолжать автопрокрутку после взаимодействия
+            },
+            breakpoints: {
+                // Когда ширина экрана меньше 920px
+                920: {
+                     slidesPerView: 4, // Количество карточек в ряду по умолчанию
+            spaceBetween: 20, // Отступ между карточками
+            loop: true, // Бесконечный слайдер
+
+                }
+            }
+        });
+    });
+</script>
+    </div>
+        </div>
+    </section>
+
+        <section id="podpis_obn" class="pd40">
+    <div class="container">
+        <div class="flex">
+            <div class="left_item">
+            <span class="h2">Подпишитесь на наши обновления, чтобы не пропустить акции
+и выгодные предложения</span>
+            <form action="" class="podpiska2">
+                            <input type="email" placeholder="E-mail" required="">
+                            <button type="submit" class="btn">Подписаться</button>
+                        </form>
+                </div>
+        </div>
+    </div>
+    </section>
+
+        <section id="podbor_expert" class="pd40">
+        <div class="container">
+            <div class="flex flex_zag">
+                <div><h2>выбор эксперта</h2></div>
+            </div>
+
+            <div class="flex flex_expert">
+                <div class="item">
+                    <img src="{% static 'images/ex_f1.jpg' %}" alt="">
+                </div>
+                 <div class="item">
+                    <div class="cont_ex">
+                            <h2>Капсула недели в стиле принцессы Дианы</h2>
+                        <p>Имеется спорная точка зрения, гласящая примерно следующее: элементы политического процесса Имеется спорная точка зрения</p>
+                        <a href="" class="btn1_1">Посмотреть <svg width="14.501953" height="6.660645" viewBox="0 0 14.502 6.66064" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs></defs>
+	<path id="Vector 1" d="M12.79 2.83L10.81 0.85C10.62 0.65 10.62 0.34 10.81 0.14C11.01 -0.05 11.32 -0.05 11.52 0.14L14.35 2.97C14.55 3.17 14.55 3.48 14.35 3.68L11.52 6.51C11.32 6.71 11.01 6.71 10.81 6.51C10.62 6.31 10.62 6 10.81 5.8L12.79 3.83L0 3.83L0 2.83L12.79 2.83Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"></path>
+</svg>
+</a>
+                    </div>
+                </div>
+            </div>
+
+           </div>
+    </section>
+
+{% include 'shop/chunk/ball_auth.html' %}
 {% endblock %}

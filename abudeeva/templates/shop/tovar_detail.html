@@ -167,17 +167,26 @@
 
 </div>
 </div>
-<script>
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
         const swiper = new Swiper('.swiper-container-dop', {
-            slidesPerView: 3, // Количество карточек в ряду
-            spaceBetween: 20, // Отступ между карточками
+              slidesPerView: 2, // Показывать одну карточку
+                    spaceBetween: 10, // Уменьшить отступ между карточками
+                    slideToClickedSlide: true, // Переход к карточке по клику
             loop: true, // Бесконечный слайдер
             autoplay: {
                 delay: 3000, // Автопрокрутка каждые 3 секунды
                 disableOnInteraction: false, // Продолжать автопрокрутку после взаимодействия
             },
+            breakpoints: {
+                // Когда ширина экрана меньше 920px
+                920: {
+                     slidesPerView: 3, // Количество карточек в ряду по умолчанию
+            spaceBetween: 20, // Отступ между карточками
+            loop: true, // Бесконечный слайдер
 
+                }
+            }
         });
     });
 </script>

@@ -164,6 +164,8 @@ THUMBNAIL_ALIASES = {
     '': {
         'tovar_zast': {'size': (453, 618), 'crop': "smart"},
         'cart_img': {'size': (98, 133), 'crop': "smart"},
+        'tovar_cat': {'size': (335, 400), 'crop': "smart"},
+
 
     },
 }
