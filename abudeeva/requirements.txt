@@ -3,3 +3,4 @@ django-mptt
 django-mptt-admin
 pillow
 easy-thumbnails
+mysqlclient

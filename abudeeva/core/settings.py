@@ -31,9 +31,9 @@ if DEBUG_HOST == 'DEV':
     DEBUG = True
 
 else:
-    ALLOWED_HOSTS = ['abudeeva.ru']
+    ALLOWED_HOSTS = ['abudeeva.ru','www.abudeeva.ru']
     WSGI_APPLICATION = 'core.wsgi.application'
-    DEBUG = True
+    DEBUG = False
 
 
 
@@ -78,6 +78,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.WwwRedirectMiddleware',
+    'core.middleware.LowercaseRedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -102,12 +104,32 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if DEBUG_HOST == 'DEV':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'kitistx5_django',
+            'USER': 'kitistx5_django',
+            'PASSWORD': 'M!*O4oEvwYDk',
+            'HOST': 'kitistx5.beget.tech',
+        }
     }
-}
+else:
+    # 301 перенаправление на https
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'kitistx5_django',
+            'USER': 'kitistx5_django',
+            'PASSWORD': 'M!*O4oEvwYDk',
+            'HOST': 'localhost',
+        }
+    }
+
 
 
 # Password validation

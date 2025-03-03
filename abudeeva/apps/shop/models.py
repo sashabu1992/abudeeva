@@ -45,8 +45,7 @@ class CategoryShop(MPTTModel):
 
     # Поле для выбора типа характеристик
     ATTRIBUTE_CHOICES = [
-        ('dresses', 'Платья'),
-        ('blazers', 'Жакеты и пиджаки'),
+        ('dresses', 'Цвет-Размер'),
     ]
     attribute_type = models.CharField(
         max_length=50,

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Страница не найдена {% endblock %}
+
+{% block content %}
+<section id="auth">
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="{% url 'index' %}">Главная</a> |
+            <span>404</span>
+        </div>
+
+        <div class="nazad">
+            <a href="javascript:history.back()">
+                <!-- SVG код остаётся без изменений -->
+                назад
+            </a>
+        </div>
+
+        <div class="cntr">
+            <h2>404 страница не найдена</h2>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+

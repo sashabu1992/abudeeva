@@ -16,3 +16,11 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 
+
+
+def page_not_found_view404(request, exception):
+    return render(request, 'pages/error404.html', status=404)
+
+
+def page_not_found_view500(request):
+    return render(request, 'pages/error404.html', status=404)
