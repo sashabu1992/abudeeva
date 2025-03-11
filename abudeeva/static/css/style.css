@@ -1212,7 +1212,234 @@ border: 1px solid rgb(233, 233, 233);
     margin-top:34px;
     padding:20px
 }
+.order-info-content h1{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 20px;
+font-weight: 500;
+line-height: 28px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+        margin-bottom:20px
+}
+.order-info-content h2{
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+        margin-bottom:20px;
+        margin-top:20px
+}
+.order-info-content h3{
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+        margin-bottom:15px
+}
+.order-info-content  p{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    margin: 0;
+    margin-bottom:20px;
+}
+.order-info-content img{
+    margin-bottom:20px;
+}
+.order-info-content a{
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 250;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+    border-bottom: 1px solid rgb(186 185 185);
+}
+.order-info-content table{
+    width:100%;
+           border: 1px solid rgb(233, 233, 233);
+}
+.order-info-content table thead{
+background: rgb(246, 246, 246);
+    text-align: left;
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: lowercase;
+}
+.order-info-content table td{
+       border: 1px solid rgb(233, 233, 233);
+        padding: 11.5px 15px 11.5px 15px;
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: lowercase;
+}
+.order-info-content table td p, .order-info-content table th p{
+    color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: lowercase;
+}
+.order-info-content table th{
+       border: 1px solid rgb(233, 233, 233);
+        padding: 11.5px 15px 11.5px 15px;
+}
+   .order-info-content ul {
+            list-style: disc; /* Убираем стандартные маркеры списка */
+            padding-left: 0; /* Убираем отступ слева */
+       margin-bottom: 30px;
+       padding-left: 40px;
+        }
+      .order-info-content ul p, .order-info-content ol p{
+          margin:0
+      }
+      .order-info-content ul li {
+                      list-style: disc; /* Убираем стандартные маркеры списка */
+            align-items: center; /* Выравниваем по вертикали */
+            margin-bottom: 5px; /* Отступ между элементами списка */
+            color: rgb(0, 0, 0);
+    font-family: Cera Pro;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+letter-spacing: 0px;
+text-align: left;
+        }
+         .order-info-content ul li p {
+            align-items: center; /* Выравниваем по вертикали */
+          color: rgb(0, 0, 0);
+    font-family: Cera Pro;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0%;
+text-align: left;
+        }
+   .order-info-content ol {
+            list-style: none; /* Убираем стандартные маркеры списка */
+            padding-left: 0; /* Убираем отступ слева */
+       margin-bottom: 30px;
+        }
 
+        .order-info-content ol li {
+            display: flex; /* Используем flexbox для выравнивания */
+            align-items: center; /* Выравниваем по вертикали */
+            margin-bottom: 20px; /* Отступ между элементами списка */
+            color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0px;
+text-align: left;
+        }
+         .order-info-content ol li p {
+            align-items: center; /* Выравниваем по вертикали */
+            color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0px;
+text-align: left;
+        }
+.order-info-content ol li em{
+    display: block;
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 14px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+}
+
+        .order-info-content ol li::before {
+            content: counter(list-item); /* Используем счетчик для отображения цифры */
+            counter-increment: list-item; /* Увеличиваем счетчик */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; /* Размер круга */
+            height: 32px; /* Размер круга */
+            border-radius: 50%; /* Делаем круг */
+            border: 1px solid rgb(56, 50, 48);
+            margin-right: 10px; /* Отступ между кругом и текстом */
+            font-weight: bold; /* Жирный шрифт для цифры */
+        }
+
+.flex-brand{
+    display: flex;
+    flex-wrap: wrap;
+    gap:40px;
+    justify-content: space-between;
+}
+.flex-brand .itembr{
+    display: flex;
+    width: calc(50% - 40px);
+    gap: 20px;
+}
+.flex-brand .itembr .br1{
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+    display: block;
+}
+.flex-brand .itembr .icon{
+width:20px;
+}
+.flex-brand .itembr .text{
+    width: calc(100% - 20px - 20px);
+}
+.flex-brand .itembr .br2{
+        display: block;
+color: rgb(0, 0, 0);
+font-family: Cera Pro;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: left;
+}
+@media(max-width:768px){
+.flex-brand .itembr{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+}
 .order-hist .status span{
 font-family: Cera Pro;
 font-size: 16px;
@@ -2813,6 +3040,7 @@ font-size: 30px;
     }
     #nav1{
         width: 90%;
+        left:-90%
     }
     .itemstovar .nametov{
         color: rgb(56, 50, 48);

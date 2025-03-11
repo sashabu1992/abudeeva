@@ -1,0 +1,17 @@
+{% load menu_filters %}
+
+<div class="sidebar-lk">
+   {% with url_name=request.resolver_match.url_name %}
+      <div class="item">
+        <a href="{% url 'brand' %}" {% if url_name == 'brand' %}class="active" {% endif %}>
+            О бренде
+        </a>
+    </div>
+  <div class="item">
+        <a href="{% url 'BlogPage' %}" {% if url_name == 'BlogPage' %}class="active"{% endif %}>
+          Блог
+        </a>
+    </div>
+
+        {% endwith %}
+</div>

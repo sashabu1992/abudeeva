@@ -1,0 +1,7 @@
+{% for item in menu %}
+    <div class="item">
+        <a href="{{ item.get_absolute_url }}" class="{% if current_url == item.get_absolute_url %}active{% endif %}">
+            {{ item.h1 }}
+        </a>
+    </div>
+{% endfor %}

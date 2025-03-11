@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+ {% load thumbnail %}
+ {% load static %}
+
+{% block content %}
+
+    <section id="order-detail">
+<div class="container">
+
+
+    <div class="breadcrumbs">
+        <a href="{% url 'index' %}">Главная</a> |
+        <span>Блог</span>
+    </div>
+
+    <div class="nazad">
+        <a href="javascript:history.back()">
+            <svg width="20.501953" height="6.660950" viewBox="0 0 20.502 6.66095" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs/>
+                <path id="Vector 2" d="M1.7 2.83L3.68 0.85C3.88 0.65 3.88 0.34 3.68 0.14C3.48 -0.05 3.17 -0.05 2.97 0.14L0.14 2.97C-0.05 3.17 -0.05 3.48 0.14 3.68L2.97 6.51C3.17 6.71 3.48 6.71 3.68 6.51C3.88 6.31 3.88 6 3.68 5.8L1.7 3.83L20.5 3.83L20.5 2.83L1.7 2.83Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
+            </svg>
+            назад
+        </a>
+    </div>
+
+
+    <div class="rows-order">
+            {% include 'pages/chunk/sidebar.html' %}
+
+        <div class="order-info order-info-content ">
+          <h1>Блог</h1>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+    </section>
+{% endblock %}

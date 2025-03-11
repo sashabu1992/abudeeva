@@ -15,6 +15,11 @@ def index(request):
     }
     return render(request, 'pages/index.html', context)
 
+def brand(request):
+    context = {
+
+    }
+    return render(request, 'pages/brand.html', context)
 
 
 

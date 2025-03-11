@@ -4,3 +4,5 @@ django-mptt-admin
 pillow
 easy-thumbnails
 mysqlclient
+django-ckeditor
+

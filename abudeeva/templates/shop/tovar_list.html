@@ -115,11 +115,11 @@
                 <div class="price-range">
                     <div>
                     <label for="min-price">От:</label>
-                    <input type="number" id="min-price" name="min_price" min="0" value="{{ min_price }}" placeholder="0">
+                    <input type="number" id="min-price" name="min_price" min="0" value="{{ min_price|floatformat:"0" }}" placeholder="0">
                         </div>
                     <div>
                     <label for="max-price">До:</label>
-                    <input type="number" id="max-price" name="max_price" min="0" value="{{ max_price }}" placeholder="10000">
+                    <input type="number" id="max-price" name="max_price" min="0" value="{{ max_price|floatformat:"0" }}" placeholder="10000">
                     </div>
                 </div>
                 <div id="price-slider"></div>
@@ -218,22 +218,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 $(document).ready(function () {
     // Инициализация слайдера для цены
-    $("#price-slider").slider({
-        range: true,
-        min: {{ min_price }},
-        max: {{ max_price }},
-        values: [{{ min_price }}, {{ max_price }}],
-        slide: function (event, ui) {
-            $("#min-price").val(ui.values[0]);
-            $("#max-price").val(ui.values[1]);
-            applyFilters(); // Отправляем фильтры при изменении слайдера
-        }
-    });
+   $("#price-slider").slider({
+    range: true,
+    min: {{ min_price|floatformat:"0" }},  // Округляем до целого числа
+    max: {{ max_price|floatformat:"0" }},  // Округляем до целого числа
+    values: [{{ min_price|floatformat:"0" }}, {{ max_price|floatformat:"0" }}],  // Округляем до целых чисел
+    slide: function (event, ui) {
+        $("#min-price").val(ui.values[0]);
+        $("#max-price").val(ui.values[1]);
+        applyFilters(); // Отправляем фильтры при изменении слайдера
+    }
+});
 
     // Обработка изменения полей ввода цены
     $("#min-price, #max-price").on("input", function () {
-        let minPrice = parseInt($("#min-price").val());
-        let maxPrice = parseInt($("#max-price").val());
+        let minPrice = parseInt($("#min-price").val(), 10);  // Преобразуем в целое число
+        let maxPrice = parseInt($("#max-price").val(), 10);  // Преобразуем в целое число
 
         // Обновляем слайдер
         $("#price-slider").slider("values", [minPrice, maxPrice]);
@@ -314,6 +314,5 @@ $(document).ready(function () {
 </script>
 
 
-    {% include 'shop/chunk/ball_auth.html' %}
 
 {% endblock %}

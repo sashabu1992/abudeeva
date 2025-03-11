@@ -80,6 +80,9 @@
 {% endif %}
 
 
+
+    {% include 'shop/chunk/ball_auth.html' %}
+
     <footer>
         <span class="leftinfo">Designed by guzel khikmatullina</span>
         <div class="container" style="background: url('{% static 'images/abude.png' %}');    background-repeat: no-repeat;
@@ -121,10 +124,10 @@
                 <div class="part2">
                     <div class="item">
                         <span class="kadd">Меню</span>
-                        <a href="">Личный кабинет</a>
+                        <a href="{% url 'lk' %}">Личный кабинет</a>
                          <a href="">Программа лояльности</a>
-                         <a href="">Покупателям</a>
-                         <a href="">О бренде</a>
+                         <a href="{% url 'pokupatel' %}">Покупателям</a>
+                         <a href="{% url 'brand' %}">О бренде</a>
                     </div>
                      <div class="item">
                         <span class="kadd">каталог</span>
@@ -202,7 +205,7 @@
 </svg>
 Подарочные сертификаты
 </a></li>
-            <li><a href="#">
+            <li><a href="{% url 'pokupatel' %}">
 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7.99967 15.1668C11.6816 15.1668 14.6663 12.1821 14.6663 8.50016C14.6663 4.81826 11.6816 1.8335 7.99967 1.8335C4.31778 1.8335 1.33301 4.81826 1.33301 8.50016C1.33301 12.1821 4.31778 15.1668 7.99967 15.1668Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M8 11.1667V8.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
@@ -210,7 +213,7 @@
 </svg>
 Покупателям
 </a></li>
-                     <li><a href="#">
+                     <li><a href="{% url 'brand' %}">
 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M6.35693 5.10622C6.35693 4.40332 6.9909 3.8335 7.77293 3.8335C8.55497 3.8335 9.18894 4.40332 9.18894 5.10622C9.18894 5.43704 9.06942 5.73838 8.86136 5.96471C8.46286 6.39821 7.86733 6.83481 7.86733 7.39713V7.58676M7.86733 7.58676C8.35501 7.58109 8.84463 7.71655 9.25602 7.99387L14.211 11.3341C15.0819 11.9212 14.62 13.1668 13.5313 13.1668H2.46804C1.39114 13.1668 0.921823 11.9434 1.76988 11.3468L6.50034 8.01931C6.90195 7.73681 7.38369 7.59239 7.86733 7.58676Z" stroke="#383230" stroke-linecap="round"/>
 </svg>

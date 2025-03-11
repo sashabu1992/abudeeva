@@ -50,9 +50,13 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'mptt',
     'django_mptt_admin',
+    'ckeditor',
+    'ckeditor_uploader',
     'apps.shop',
     'apps.cart',
     'apps.account',
+    'apps.staticpage',
+    'apps.blog'
 ]
 LOGGING = {
     'version': 1,
@@ -207,3 +211,63 @@ EMAIL_USE_SSL = True  # Используйте True для порта 465
 EMAIL_USE_TLS = False  # Используйте True для порта 587
 EMAIL_HOST_USER = 'robot@abudeeva.ru'
 EMAIL_HOST_PASSWORD = 'I*a6qsK&9LGp'
+
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'toolbar_Basic': [
+            ['Source', '-', 'Bold', 'Italic']
+        ],
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'document', 'items': ['Source']},
+            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'styles', 'items': ['Styles', 'Format']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['ShowBlocks']},
+            {'name': 'yourcustomtools', 'items': [
+                'Preview',
+                'Maximize',
+            ]},
+            '/',
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
+                       'Language']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert',
+             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
+        ],
+        'toolbar': 'YourCustomToolbarConfig',
+        'tabSpaces': 4,
+        'stylesSet': [
+            {'name': 'Thin (100)', 'element': 'span', 'styles': {'font-weight': '100'}},
+            {'name': 'Extra Light (200)', 'element': 'span', 'styles': {'font-weight': '200'}},
+            {'name': 'Light (300)', 'element': 'span', 'styles': {'font-weight': '300'}},
+            {'name': 'Normal (400)', 'element': 'span', 'styles': {'font-weight': '400'}},
+            {'name': 'Medium (500)', 'element': 'span', 'styles': {'font-weight': '500'}},
+            {'name': 'Semi Bold (600)', 'element': 'span', 'styles': {'font-weight': '600'}},
+        ],
+        'extraPlugins': ','.join([
+            'uploadimage',
+            'div',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath',
+            'table',
+            'stylescombo',  # Добавляем плагин для работы с пользовательскими стилями
+        ]),
+        'enterMode':1, # Создавать абзац при нажатии Shift + Enter
+        'shiftEnterMode': 2,   # Вставлять <br> при нажатии Enter
+    },
+}

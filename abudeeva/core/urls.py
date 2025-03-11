@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from core import settings
-from core.views import index
+from core.views import index, brand
 from . import views
 
 urlpatterns = [
@@ -28,6 +28,10 @@ urlpatterns = [
     path('lk/', include('apps.account.urls')),
     path('cart/', include('apps.cart.urls')),
     path('shop/', include('apps.shop.urls')),  # Подключаем URLs приложения shop
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('pokupatel/', include('apps.staticpage.urls')),
+    path('brand/', brand, name='brand'),
+    path('blog/', include('apps.blog.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
